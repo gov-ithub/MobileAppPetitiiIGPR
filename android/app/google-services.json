@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "892632780026",
+    "firebase_url": "https://petitii-igpr.firebaseio.com",
+    "project_id": "petitii-igpr",
+    "storage_bucket": "petitii-igpr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892632780026:android:323d2373ca82ab0b",
+        "android_client_info": {
+          "package_name": "ro.politiaromana.petitie.mobile.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892632780026-97t4hkcsklf0vahfdhirdiphds285a99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ro.politiaromana.petitie.mobile.android",
+            "certificate_hash": "7FF74CACC4E6171F0169B2CA1DDBC9B1FC02D813"
+          }
+        },
+        {
+          "client_id": "892632780026-e63b7252vusem6e09u6s9c7cgqjha4au.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsEiF7MCPFSZyYC11ZoL0lSjtWyavw0Y4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892632780026-e63b7252vusem6e09u6s9c7cgqjha4au.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892632780026:android:5efc0708dd742b63",
+        "android_client_info": {
+          "package_name": "ro.politiaromana.petitie.mobile.android.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892632780026-ldttat4e69l82pmadb4ddtkog4t2kbsv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ro.politiaromana.petitie.mobile.android.debug",
+            "certificate_hash": "7FF74CACC4E6171F0169B2CA1DDBC9B1FC02D813"
+          }
+        },
+        {
+          "client_id": "892632780026-e63b7252vusem6e09u6s9c7cgqjha4au.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsEiF7MCPFSZyYC11ZoL0lSjtWyavw0Y4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892632780026-e63b7252vusem6e09u6s9c7cgqjha4au.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
