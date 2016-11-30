@@ -1,0 +1,38 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- standard metrics -->
+    <dimen name="spacing_macro">12dp</dimen>
+    <dimen name="spacing_normal">8dp</dimen>
+    <dimen name="spacing_micro">4dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_macro">64dp</dimen>
+
+    <!-- App Primary Text Sizes -->
+    <dimen name="app_text_size_xsmall">11sp</dimen>
+    <dimen name="app_text_size_small">12sp</dimen>
+    <dimen name="app_text_size_medium">14sp</dimen>
+    <dimen name="app_text_size_large">18sp</dimen>
+    <dimen name="app_text_size_xlarge">20sp</dimen>
+
+    <dimen name="avatar_width">40dp</dimen>
+    <dimen name="idealTargetSize0.5">24dp</dimen>
+    <dimen name="idealTargetSize">48dp</dimen>
+
+    <dimen name="keyline_1">16dp</dimen>
+    <dimen name="keyline_1_minus_8dp">8dp</dimen>
+    <dimen name="keyline_2">72dp</dimen>
+    <dimen name="keyline_2_minus_16dp">56dp</dimen>
+
+    <dimen name="oneLineAvatarListItemPreferredHeight">56dp</dimen>
+    <dimen name="oneLineAvatarDenseListItemPreferredHeight">48dp</dimen>
+    <dimen name="twoLineListPreferredItemHeight">72dp</dimen>
+    <dimen name="threeLineListPreferredItemHeight">88dp</dimen>
+
+    <!-- per https://developer.android.com/reference/android/view/ViewGroup.LayoutParams.html#MATCH_PARENT -->
+    <item name="match_parent" format="integer" type="dimen">-1</item>
+
+</resources>
