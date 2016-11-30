@@ -5,6 +5,7 @@ buildscript {
 
     dependencies {
         classpath "me.tatarka:gradle-retrolambda:$rootProject.ext.retrolambdaPlugin"
+        classpath "com.google.gms:google-services:$rootProject.ext.googleServicesPlugin"
     }
 }
 
@@ -39,6 +40,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-DEBUG'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -54,6 +60,7 @@ dependencies {
     compile "com.android.support:multidex:$rootProject.ext.multidex"
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibrary"
     compile "com.android.support:design:$rootProject.ext.supportLibrary"
+    compile "com.google.firebase:firebase-core:$rootProject.ext.play"
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
     compile "com.squareup.retrofit2:converter-jackson:$rootProject.ext.retrofit"
     compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.ext.retrofit"
@@ -73,3 +80,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 }
+
+// Uncomment once we have a Firebase Project on the web console
+//apply plugin: 'com.google.gms.google-services'

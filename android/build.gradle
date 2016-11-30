@@ -28,6 +28,7 @@ ext {
     buildToolsVersion = '25.0.1'
     retrolambda = '2.3.0'
     retrolambdaPlugin = '3.2.5'
+    googleServicesPlugin = '3.0.0'
 
     multidex = '1.0.1'
     rxjava = '1.2.0'
