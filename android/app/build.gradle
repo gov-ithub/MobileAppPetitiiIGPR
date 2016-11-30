@@ -82,4 +82,4 @@ dependencies {
 }
 
 // Uncomment once we have a Firebase Project on the web console
-//apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.gms.google-services'
