@@ -1,4 +1,36 @@
 <resources>
     <string name="app_name">Petitii</string>
     <string name="action_settings">Settings</string>
+
+    <!--region DRAWER -->
+    <string name="drawer_item_profile">Profile</string>
+    <string name="drawer_item_legislation">Legislation</string>
+    <string name="drawer_item_feedback">Send Feedback</string>
+    <string name="drawer_item_invite_friends">Invite Friends</string>
+    <string name="drawer_item_faq">FAQ</string>
+    <string name="drawer_item_about">About</string>
+    <!--endregion -->
+
+    <!--region PROFILE -->
+    <string name="profile_first_name">First Name</string>
+    <string name="profile_last_name">Last Name</string>
+    <string name="profile_email">Email</string>
+    <string name="profile_cnp">CNP</string>
+    <string name="profile_home_address">Home Address</string>
+    <string name="profile_county">County</string>
+    <string name="profile_phone">Phone</string>
+
+    <string name="error_first_name_is_required">First Name is required</string>
+    <string name="error_last_name_is_required">Last Name is required</string>
+    <string name="error_email_is_required">Email is required</string>
+    <string name="error_email_is_invalid">Email is invalid</string>
+    <string name="error_confirm_password_is_required">Confirm Password is required</string>
+    <string name="error_passwords_do_not_match">Passwords do not match</string>
+    <string name="error_password_must_be_6_chars_long">Passwords must be at least 6 characters long</string>
+    <string name="error_cnp_is_required">CNP is required</string>
+    <string name="error_cnp_is_invalid">CNP is invalid</string>
+    <string name="error_address_is_required">Address is required</string>
+    <string name="error_phone_is_invalid">Phone number is invalid</string>
+    <!--endregion -->
+
 </resources>
