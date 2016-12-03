@@ -50,6 +50,8 @@ public interface ProfileContract {
         void showPhoneInvalidError();
 
         void clearPhoneErrors();
+
+        void onProfileFormValidation(boolean isValid);
         //endregion
     }
 

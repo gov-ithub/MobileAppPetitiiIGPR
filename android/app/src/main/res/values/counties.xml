@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="counties">
+        <item>Alba</item>
+        <item>Arad</item>
+        <item>Argeș</item>
+        <item>Bacău</item>
+        <item>Bihor</item>
+        <item>Bistrița-Năsăud</item>
+        <item>Botoșani</item>
+        <item>Brăila</item>
+        <item>Brașov</item>
+        <item>București</item>
+        <item>Buzău</item>
+        <item>Călărași</item>
+        <item>Caraș-Severin</item>
+        <item>Cluj</item>
+        <item>Constanța</item>
+        <item>Covasna</item>
+        <item>Dîmbovița</item>
+        <item>Dolj</item>
+        <item>Galați</item>
+        <item>Giurgiu</item>
+        <item>Gorj</item>
+        <item>Harghita</item>
+        <item>Hunedoara</item>
+        <item>Ialomița</item>
+        <item>Iași</item>
+        <item>Ilfov</item>
+        <item>Maramureș</item>
+        <item>Mehedinți</item>
+        <item>Mureș</item>
+        <item>Neamț</item>
+        <item>Olt</item>
+        <item>Prahova</item>
+        <item>Sălaj</item>
+        <item>Satu Mare</item>
+        <item>Sibiu</item>
+        <item>Suceava</item>
+        <item>Teleorman</item>
+        <item>Timiș</item>
+        <item>Tulcea</item>
+        <item>Vaslui</item>
+        <item>Vîlcea</item>
+        <item>Vrancea</item>
+    </string-array>
+
+</resources>

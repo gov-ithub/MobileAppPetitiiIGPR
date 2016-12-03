@@ -26,6 +26,7 @@ ext {
     targetSdkVersion = 24
     compileSdkVersion = 24
     buildToolsVersion = '25.0.1'
+    kotlin = '1.1-M03'
     retrolambda = '2.3.0'
     retrolambdaPlugin = '3.2.5'
     googleServicesPlugin = '3.0.0'
@@ -45,4 +46,6 @@ ext {
     rxAndroid = '1.2.0'
     rxBinding = '0.4.0'
     materialDrawer = '5.8.0@aar'
+    materialTypefaces = '2.2.0.3.original@aar'
+    libPhoneNumber = '7.7.5'
 }

@@ -79,7 +79,8 @@ dependencies {
     compile "com.jakewharton.rxbinding:rxbinding:$rootProject.ext.rxBinding"
     compile "com.jakewharton.timber:timber:$rootProject.ext.timber"
     compile("com.mikepenz:materialdrawer:$rootProject.ext.materialDrawer") { transitive = true }
-    compile 'com.mikepenz:google-material-typeface:2.2.0.3.original@aar'
+    compile "com.googlecode.libphonenumber:libphonenumber:$rootProject.ext.libPhoneNumber"
+    compile "com.mikepenz:google-material-typeface:$rootProject.ext.materialTypefaces"
 //    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha4'
 //    compile "com.google.guava:guava:$rootProject.guavaVersion"
 

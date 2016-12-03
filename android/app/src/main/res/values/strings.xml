@@ -18,7 +18,7 @@
     <string name="profile_cnp">CNP</string>
     <string name="profile_home_address">Home Address</string>
     <string name="profile_county">County</string>
-    <string name="profile_phone">Phone</string>
+    <string name="profile_phone">Phone (optional)</string>
 
     <string name="error_first_name_is_required">First Name is required</string>
     <string name="error_last_name_is_required">Last Name is required</string>
