@@ -24,6 +24,7 @@
         <activity android:name=".AboutActivity" />
         <activity android:name=".FAQActivity" />
         <activity android:name=".LegislationActivity" />
+        <activity android:name=".ticket.TicketActivity"/>
     </application>
 
 </manifest>

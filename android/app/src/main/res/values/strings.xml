@@ -33,4 +33,13 @@
     <string name="error_phone_is_invalid">Phone number is invalid</string>
     <!--endregion -->
 
+    <!--region TICKET-->
+    <string name="ticket_type">Ticket type</string>
+    <string name="add_photos">Add photos</string>
+    <string name="send_ticket">Send ticket</string>
+    <string name="ticket_address">Ticket Address</string>
+    <string name="description">Description</string>
+
+    <string name="error_description_required">Description is required</string>
+    <!--endregion-->
 </resources>
