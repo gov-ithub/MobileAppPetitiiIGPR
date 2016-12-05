@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import ro.politiaromana.petitie.mobile.android.R;
 import ro.politiaromana.petitie.mobile.android.databinding.ActivityProfileBinding;
+import ro.politiaromana.petitie.mobile.android.model.Profile;
 import ro.politiaromana.petitie.mobile.android.util.ActivityUtils;
 
 /**
@@ -33,7 +34,11 @@ public class TicketActivity extends AppCompatActivity{
         FragmentManager fm = getSupportFragmentManager();
         TicketFragment ticketFragment = (TicketFragment) fm.findFragmentById(R.id.profile_container);
         if (ticketFragment == null) {
-            ticketFragment = new TicketFragment();
+            //Dummy profile
+            Profile dummyProfile = new Profile("John", "Doe", "john.doe@gmail.com", "14383934800823",
+                    "Sesame Street", "Bucharest", "+4082394323");
+
+            ticketFragment = TicketFragment.newInstance(dummyProfile);
             ActivityUtils.addFragmentToActivity(fm, ticketFragment, R.id.profile_container);
         }
     }

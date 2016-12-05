@@ -1,10 +1,12 @@
 package ro.politiaromana.petitie.mobile.android.model;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 import io.realm.annotations.Required;
 
 
-public class Profile extends RealmObject {
+public class Profile extends RealmObject implements Serializable {
 
     @Required
     public String firstName;

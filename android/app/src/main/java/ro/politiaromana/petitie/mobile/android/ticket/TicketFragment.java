@@ -11,10 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.jakewharton.rxbinding.widget.RxAdapterView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,8 +24,6 @@ import ro.politiaromana.petitie.mobile.android.model.Profile;
 import ro.politiaromana.petitie.mobile.android.model.RealmString;
 import ro.politiaromana.petitie.mobile.android.model.Ticket;
 import ro.politiaromana.petitie.mobile.android.util.CameraUtil;
-import ro.politiaromana.petitie.mobile.android.util.RxUi;
-import rx.Observable;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -41,12 +37,22 @@ public class TicketFragment extends Fragment implements TicketContract.View {
     private static final int REQUEST_IMAGE_CAPTURE_2 = 2;
     private static final int REQUEST_IMAGE_CAPTURE_3 = 3;
 
+    private static final String KEY_PROFILE = "key_profile";
+
     private FragmentTicketBinding binding;
     private TicketContract.Presenter presenter;
     private CharSequence[] ticketTypeArray;
     private List<String> attachmentPathList;
 
     private File mCurrentPhotoFile;
+
+    public static TicketFragment newInstance(Profile profile) {
+        Bundle args = new Bundle();
+        args.putSerializable(KEY_PROFILE,profile);
+        TicketFragment fragment = new TicketFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,11 +83,17 @@ public class TicketFragment extends Fragment implements TicketContract.View {
                 REQUEST_IMAGE_CAPTURE_3)
         );
 
-        binding.sendTicket.setOnClickListener(v ->
-                showEmailClient(new Profile(), new Ticket())
-        );
+        binding.sendTicket.setOnClickListener(v -> {
+            presenter.onSendButtonClicked();
+        });
 
-        this.presenter = new TicketPresenter();
+        Profile profile = new Profile();
+
+        if(getArguments() != null){
+            profile = ((Profile) getArguments().getSerializable(KEY_PROFILE));
+        }
+
+        this.presenter = new TicketPresenter(profile);
         this.presenter.takeView(this);
 
         return binding.getRoot();
@@ -125,22 +137,20 @@ public class TicketFragment extends Fragment implements TicketContract.View {
         presenter.dropView();
     }
 
-    @Override public Observable<String> getTypeObservable() {
-        return RxAdapterView.itemSelections(binding.ticketTypeSpinner)
-                .skip(1)
-                .map(position -> ticketTypeArray[position].toString());
+    @Override public String getType() {
+        return ((String) binding.ticketTypeSpinner.getSelectedItem());
     }
 
-    @Override public Observable<List<String>> getAttachmentPathListObservable() {
-        return Observable.just(attachmentPathList);
+    @Override public List<String> getAttachmentList() {
+        return attachmentPathList;
     }
 
-    @Override public Observable<String> getAddressObservable() {
-        return RxUi.formField(binding.addressInput);
+    @Override public String getAddress() {
+        return binding.addressInput.getText().toString();
     }
 
-    @Override public Observable<String> getDescriptionObservable() {
-        return RxUi.formField(binding.descriptionInput);
+    @Override public String getDescription() {
+        return binding.descriptionInput.getText().toString();
     }
 
     @Override public void showDescriptionError() {
@@ -151,24 +161,30 @@ public class TicketFragment extends Fragment implements TicketContract.View {
         binding.descriptionInputLayout.setError(null);
     }
 
-    @Override public void onTicketFormValidation(boolean isValid) {
-        Toast.makeText(getContext(), "valid: " + isValid, Toast.LENGTH_SHORT).show();
-    }
-
     @Override public void showEmailClient(Profile profile, Ticket ticket) {
         Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
         emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         emailIntent.setType("vnd.android.cursor.item/email");
         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {"abc@xyz.com"});
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, ticket.typeStringValue);
-        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, ticket.description);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Prenume: ").append(profile.firstName).append("\n");
+        stringBuilder.append("Nume: ").append(profile.lastName).append("\n");
+        stringBuilder.append("Email: ").append(profile.email).append("\n");
+        stringBuilder.append("CNP: ").append(profile.cnp).append("\n");
+        stringBuilder.append("Adresa domiciliu: ").append(profile.address).append("\n");
+        stringBuilder.append("Judet: ").append(profile.county).append("\n");
+        stringBuilder.append("Telefon: ").append(profile.phone).append("\n\n");
+        stringBuilder.append("Locatie petitie: ").append(ticket.address).append("\n");
+        stringBuilder.append("Mesaj: ").append(ticket.description);
+        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, stringBuilder.toString());
 
         ArrayList<Uri> uriList = new ArrayList<>();
-        if(ticket.attachmentPathList != null) {
-            for (RealmString path : ticket.attachmentPathList) {
-                uriList.add(Uri.parse(path.val));
-            }
+        for (RealmString path : ticket.attachmentPathList) {
+            File file = new File(path.val);
+            uriList.add(Uri.fromFile(file));
         }
+        emailIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
         emailIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriList);
 
         startActivity(Intent.createChooser(emailIntent, getString(R.string.chooser_title)));
