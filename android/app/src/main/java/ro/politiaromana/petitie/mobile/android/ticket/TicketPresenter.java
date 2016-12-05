@@ -39,6 +39,10 @@ public class TicketPresenter extends BasePresenter<TicketContract.View>
         }
     }
 
+    @Override public void onLocationIconClicked() {
+        view.showChoosePlaceScreen();
+    }
+
     private boolean validateForm() {
         if(view.getType() == null || view.getType().isEmpty()){
             return false;

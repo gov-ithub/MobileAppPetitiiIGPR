@@ -18,7 +18,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import ro.politiaromana.petitie.mobile.android.databinding.ActivityMainBinding;
-import ro.politiaromana.petitie.mobile.android.profile.ProfileActivity;
+import ro.politiaromana.petitie.mobile.android.ticket.TicketActivity;
 import ro.politiaromana.petitie.mobile.android.util.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,8 +56,9 @@ public class MainActivity extends AppCompatActivity {
                     @DrawerItem final int id = (int) drawerItem.getIdentifier();
                     switch (id) {
                         case DRAWER_ITEM_PROFILE:
-                            startActivity(new Intent(this, ProfileActivity.class));
-«                            break;
+//                            startActivity(new Intent(this, ProfileActivity.class));
+                            TicketActivity.start(this);
+                            break;
                         case DRAWER_ITEM_LEGISLATION:
                             startActivity(new Intent(this, LegislationActivity.class));
                             break;

@@ -6,13 +6,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -25,7 +32,9 @@ import ro.politiaromana.petitie.mobile.android.model.RealmString;
 import ro.politiaromana.petitie.mobile.android.model.Ticket;
 import ro.politiaromana.petitie.mobile.android.util.CameraUtil;
 
+import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
+import static com.mikepenz.iconics.Iconics.TAG;
 
 /**
  * Created by andrei.
@@ -36,6 +45,7 @@ public class TicketFragment extends Fragment implements TicketContract.View {
     private static final int REQUEST_IMAGE_CAPTURE_1 = 1;
     private static final int REQUEST_IMAGE_CAPTURE_2 = 2;
     private static final int REQUEST_IMAGE_CAPTURE_3 = 3;
+    private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 4;
 
     private static final String KEY_PROFILE = "key_profile";
 
@@ -83,9 +93,9 @@ public class TicketFragment extends Fragment implements TicketContract.View {
                 REQUEST_IMAGE_CAPTURE_3)
         );
 
-        binding.sendTicket.setOnClickListener(v -> {
-            presenter.onSendButtonClicked();
-        });
+        binding.sendTicket.setOnClickListener(v -> presenter.onSendButtonClicked());
+
+        binding.iconLocation.setOnClickListener(v -> presenter.onLocationIconClicked());
 
         Profile profile = new Profile();
 
@@ -100,7 +110,10 @@ public class TicketFragment extends Fragment implements TicketContract.View {
     }
 
     @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode != RESULT_OK){
+        if(resultCode != RESULT_OK
+                && (requestCode == REQUEST_IMAGE_CAPTURE_1
+                || requestCode == REQUEST_IMAGE_CAPTURE_2
+                || requestCode == REQUEST_IMAGE_CAPTURE_3)){
             onImageFailure();
             return;
         }
@@ -112,6 +125,18 @@ public class TicketFragment extends Fragment implements TicketContract.View {
         }
         if (requestCode == REQUEST_IMAGE_CAPTURE_3 && resultCode == RESULT_OK) {
             this.onImageSuccess(binding.image3);
+        }
+        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE){
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(getActivity(), data);
+                binding.addressInput.setText(place.getAddress());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(getActivity(), data);
+                Toast.makeText(getActivity(), R.string.error_place_not_found, Toast.LENGTH_SHORT).show();
+                Log.i(TAG, status.getStatusMessage());
+            } else if (resultCode == RESULT_CANCELED) {
+                // The user canceled the operation.
+            }
         }
     }
 
@@ -131,6 +156,17 @@ public class TicketFragment extends Fragment implements TicketContract.View {
         }
     }
 
+    @Override public void showChoosePlaceScreen(){
+        try {
+            Intent intent =
+                    new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                            .build(getActivity());
+            startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+        } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+            Toast.makeText(getActivity(), getString(R.string.error_google_play_services),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override public void onDestroyView() {
         super.onDestroyView();

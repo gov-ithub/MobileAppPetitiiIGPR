@@ -23,10 +23,12 @@ public interface TicketContract {
         void clearDescriptionError();
 
         void showEmailClient(Profile profile, Ticket ticket);
+        void showChoosePlaceScreen();
     }
 
     interface Presenter extends AbsPresenter<View> {
         void onSendButtonClicked();
+        void onLocationIconClicked();
     }
 
 }

@@ -28,6 +28,10 @@
         <activity android:name=".FAQActivity" />
         <activity android:name=".LegislationActivity" />
         <activity android:name=".ticket.TicketActivity"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDVvsAJ_Qvvd1hKVT-ZyVm0zS_guUwxxiA"/>
     </application>
 
 </manifest>
