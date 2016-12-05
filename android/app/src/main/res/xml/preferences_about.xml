@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <Preference
+        android:key="@string/key_build_version"
+        android:title="Build version"/>
+    <Preference
         android:key="@string/key_privacy_policy"
         android:title="Privacy Policy"/>
     <Preference
@@ -10,7 +13,4 @@
         android:key="@string/key_open_source"
         android:title="Open Source Licenses"
         android:summary="License details for open source software"/>
-    <Preference
-        android:key="@string/key_build_version"
-        android:title="Build version"/>
 </PreferenceScreen>
