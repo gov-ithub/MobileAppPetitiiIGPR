@@ -5,7 +5,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/padding_normal"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="8dp"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_add_black_24dp"/>
 
             <ro.politiaromana.petitie.mobile.android.widget.SquareImageView
@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_add_black_24dp"/>
 
             <ro.politiaromana.petitie.mobile.android.widget.SquareImageView
@@ -58,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_add_black_24dp"/>
         </LinearLayout>
         <LinearLayout

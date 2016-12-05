@@ -83,6 +83,7 @@ dependencies {
     compile "com.mikepenz:google-material-typeface:$rootProject.ext.materialTypefaces"
 //    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha4'
 //    compile "com.google.guava:guava:$rootProject.guavaVersion"
+    compile "com.github.bumptech.glide:glide:$rootProject.ext.glide"
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
