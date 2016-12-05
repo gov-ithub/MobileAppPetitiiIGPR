@@ -18,8 +18,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import ro.politiaromana.petitie.mobile.android.databinding.ActivityMainBinding;
+import ro.politiaromana.petitie.mobile.android.petition.PetitionActivity;
 import ro.politiaromana.petitie.mobile.android.profile.ProfileActivity;
-import ro.politiaromana.petitie.mobile.android.util.ActivityUtils;
+import ro.politiaromana.petitie.mobile.android.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
         ActivityUtils.setupSimpleToolbar(this, binding.toolbar);
         setupDrawer();
+
+        binding.newPetitionButton.setOnClickListener(v -> startActivity(new Intent(this, PetitionActivity.class)));
     }
 
     private void setupDrawer() {
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         new SecondaryDrawerItem().withName(R.string.drawer_item_about).withIcon(GoogleMaterial.Icon.gmd_info).withSelectable(false).withIdentifier(DRAWER_ITEM_ABOUT)
                 )
                 .withSelectedItem(-1)
+                .withCloseOnClick(true)
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     @DrawerItem final int id = (int) drawerItem.getIdentifier();
                     switch (id) {

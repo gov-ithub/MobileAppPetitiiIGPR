@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Petitii</string>
+    <string name="app_name">Poliția Română - Petiții</string>
     <string name="action_settings">Settings</string>
 
     <!--region DRAWER -->
@@ -11,6 +11,15 @@
     <string name="drawer_item_about">About</string>
     <!--endregion -->
 
+    <!--region ACTIONS -->
+    <string name="action_yes">Yes</string>
+    <string name="action_no">No</string>
+    <string name="action_save">Save</string>
+    <string name="action_next">Next</string>
+    <string name="action_send">Send</string>
+    <string name="action_new_petition">New Petition</string>
+    <!--endregion -->
+
     <!--region PROFILE -->
     <string name="profile_first_name">First Name</string>
     <string name="profile_last_name">Last Name</string>
@@ -19,6 +28,11 @@
     <string name="profile_home_address">Home Address</string>
     <string name="profile_county">County</string>
     <string name="profile_phone">Phone (optional)</string>
+
+    <string name="profile_save_changes_title">Save changes?</string>
+    <string name="profile_save_changes_message">Your changes will be lost otherwise</string>
+
+    <string name="profile_saving">Saving profile…</string>
 
     <string name="error_first_name_is_required">First Name is required</string>
     <string name="error_last_name_is_required">Last Name is required</string>
@@ -31,6 +45,18 @@
     <string name="error_cnp_is_invalid">CNP is invalid</string>
     <string name="error_address_is_required">Address is required</string>
     <string name="error_phone_is_invalid">Phone number is invalid</string>
+    <!--endregion -->
+
+    <string-array name="petition_steps">
+        <item>Profile</item>
+        <item>Petition Details</item>
+    </string-array>
+
+    <!--region ABOUT -->
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_of_service">Terms of service</string>
+    <string name="open_source_licenses">Open-source licenses</string>
+    <string name="call_112">In case of emergency, CALL 112</string>
     <!--endregion -->
 
 </resources>

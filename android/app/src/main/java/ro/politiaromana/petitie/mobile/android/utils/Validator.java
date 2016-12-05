@@ -1,4 +1,4 @@
-package ro.politiaromana.petitie.mobile.android.util;
+package ro.politiaromana.petitie.mobile.android.utils;
 
 
 import android.support.annotation.NonNull;
@@ -13,7 +13,7 @@ public final class Validator {
 
     private Validator() {}
 
-    private static final Pattern EMAIL_ADDRESS
+    private static final Pattern EMAIL_ADDRESS_PATTERN
             = Pattern.compile(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                     "\\@" +
@@ -25,7 +25,7 @@ public final class Validator {
     );
 
     public static boolean isValidEmailAddress(@NonNull final String emailAddress) {
-        return EMAIL_ADDRESS.matcher(emailAddress).matches();
+        return EMAIL_ADDRESS_PATTERN.matcher(emailAddress).matches();
     }
 
     public static boolean isValidCNP(@NonNull final String cnp) {

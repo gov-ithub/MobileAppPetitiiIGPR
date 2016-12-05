@@ -1,4 +1,4 @@
-package ro.politiaromana.petitie.mobile.android.util;
+package ro.politiaromana.petitie.mobile.android.utils;
 
 
 import java.util.concurrent.TimeUnit;
@@ -11,7 +11,6 @@ public class FormFieldTransformer implements Observable.Transformer<CharSequence
     @Override
     public Observable<String> call(Observable<CharSequence> textChanges) {
         return textChanges
-                .skip(1) // We don't want to process the default empty value
                 .sample(100, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
                 .debounce(200, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
                 .onBackpressureLatest()

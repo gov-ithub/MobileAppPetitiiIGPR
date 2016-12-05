@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="enableHintAnimation"
+            type="Boolean" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,7 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
             android:hint="@string/profile_last_name"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="@{enableHintAnimation}">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/last_name_input"
@@ -31,7 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
             android:hint="@string/profile_first_name"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="@{enableHintAnimation}">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/first_name_input"
@@ -47,7 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
             android:hint="@string/profile_email"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="@{enableHintAnimation}">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/email_input"
@@ -63,7 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
             android:hint="@string/profile_cnp"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="@{enableHintAnimation}">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/cnp_input"
@@ -79,7 +90,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
             android:hint="@string/profile_home_address"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="@{enableHintAnimation}">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/address_input"
@@ -94,7 +106,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/spacing_micro"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="RtlHardcoded">
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Caption"
@@ -118,7 +131,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
             android:hint="@string/profile_phone"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="@{enableHintAnimation}">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/phone_input"

@@ -93,6 +93,50 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892632780026:android:4f21b025677dfa1d",
+        "android_client_info": {
+          "package_name": "ro.politiaromana.petitie.mobile.android.alpha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892632780026-rcabh5qmlhortd0sf1sh3f63j9uma71f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ro.politiaromana.petitie.mobile.android.alpha",
+            "certificate_hash": "7FF74CACC4E6171F0169B2CA1DDBC9B1FC02D813"
+          }
+        },
+        {
+          "client_id": "892632780026-e63b7252vusem6e09u6s9c7cgqjha4au.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsEiF7MCPFSZyYC11ZoL0lSjtWyavw0Y4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892632780026-e63b7252vusem6e09u6s9c7cgqjha4au.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

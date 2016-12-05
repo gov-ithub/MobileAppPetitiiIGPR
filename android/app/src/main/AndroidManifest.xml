@@ -20,10 +20,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".profile.ProfileActivity" />
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".FAQActivity" />
-        <activity android:name=".LegislationActivity" />
+        <activity
+            android:name=".profile.ProfileActivity"
+            android:label="@string/drawer_item_profile" />
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/drawer_item_about" />
+        <activity
+            android:name=".FAQActivity"
+            android:label="@string/drawer_item_faq" />
+        <activity
+            android:name=".LegislationActivity"
+            android:label="@string/drawer_item_legislation" />
+        <activity
+            android:name=".petition.PetitionActivity"
+            android:label="@string/action_new_petition" />
     </application>
 
 </manifest>

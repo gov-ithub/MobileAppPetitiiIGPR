@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:enterFadeDuration="@android:integer/config_shortAnimTime" android:exitFadeDuration="@android:integer/config_shortAnimTime">
+
+    <item android:state_selected="true">
+        <shape android:shape="oval">
+            <solid android:color="@color/dark_police_blue" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <stroke android:width="1dip" android:color="@color/dark_police_blue" />
+        </shape>
+    </item>
+
+</selector>

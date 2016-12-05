@@ -2,32 +2,96 @@ package ro.politiaromana.petitie.mobile.android.profile;
 
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import ro.politiaromana.petitie.mobile.android.model.Profile;
-import ro.politiaromana.petitie.mobile.android.util.BasePresenter;
-import ro.politiaromana.petitie.mobile.android.util.RxUi;
-import ro.politiaromana.petitie.mobile.android.util.Validator;
+import ro.politiaromana.petitie.mobile.android.utils.BasePresenter;
+import ro.politiaromana.petitie.mobile.android.utils.RxUi;
+import ro.politiaromana.petitie.mobile.android.utils.Validator;
 import rx.Observable;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
+import rx.functions.Action2;
+import rx.functions.Func0;
+import rx.functions.Func1;
 import rx.observables.ConnectableObservable;
+import rx.schedulers.Schedulers;
 
-import static ro.politiaromana.petitie.mobile.android.util.RxUi.required;
+import static ro.politiaromana.petitie.mobile.android.utils.RxUi.required;
 
 public class ProfilePresenter extends BasePresenter<ProfileContract.View> implements ProfileContract.Presenter {
 
+    @NonNull
+    private final Func0<Observable<Profile>> getProfile;
+    @NonNull
+    private final Func1<Profile, Observable<Profile>> saveProfile;
+    @Nullable
+    private Profile loadedProfile;
+    private boolean isFormValid = true;
+    private boolean hasFormUnsavedChanges = false;
     private ConnectableObservable<Profile> profileFormObservable;
+    @Nullable
+    private Action2<Boolean, Boolean> updatesCallback;
 
-    public ProfilePresenter() {
+    public ProfilePresenter(@NonNull Func0<Observable<Profile>> getProfile, @NonNull Func1<Profile, Observable<Profile>> saveProfile) {
+        this.getProfile = getProfile;
+        this.saveProfile = saveProfile;
+    }
 
+    @Override
+    public boolean isValid() {
+        return isFormValid;
+    }
+
+    @Override
+    public boolean hasUnsavedChanges() {
+        return hasFormUnsavedChanges;
+    }
+
+    @Override
+    public void setUpdatesCallback(@NonNull Action2<Boolean, Boolean> callback) {
+        updatesCallback = callback;
     }
 
     @Override
     public void takeView(@NonNull ProfileContract.View view) {
         super.takeView(view);
+        getProfile.call()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(profile -> {
+                    this.loadedProfile = profile;
+                    this.isFormValid = loadedProfile != null;
+                    this.hasFormUnsavedChanges = false;
+                    view.bind(profile);
+                    notifyUpdates();
+                    startFormValidation();
+                }, view::showError);
+    }
+
+    @Override
+    public void saveChanges(@Nullable Action0 callback) {
+        final Subscription s = profileFormObservable.autoConnect().first()
+                .observeOn(Schedulers.io())
+                .concatMap(saveProfile::call)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(savedProfile -> {
+                    this.loadedProfile = savedProfile;
+                    this.isFormValid = true;
+                    this.hasFormUnsavedChanges = false;
+                    notifyUpdates();
+                    if (callback != null) {
+                        callback.call();
+                    }
+                }, view::showError);
+        lifecycleSubscription.add(s);
+    }
+
+    private void startFormValidation() {
         // We need the last Profile emitted for further processing (save it on storage)
         profileFormObservable = processForm().replay(1);
 
-        // Start form validation
         lifecycleSubscription.add(profileFormObservable.autoConnect().subscribe());
     }
 
@@ -44,19 +108,31 @@ public class ProfilePresenter extends BasePresenter<ProfileContract.View> implem
                 .compose(RxUi.required(view::clearAddressErrors, view::showAddressRequiredError));
         final Observable<String> countyObs = view.getCountyObservable();
         final Observable<String> phoneObs = view.getPhoneObservable()
-                .startWith("") // field is optional
-                .compose(RxUi.validate(Validator::isValidROPhoneNumber, view::clearPhoneErrors, DO_NOTHING, view::showPhoneInvalidError));
+                .compose(RxUi.validate(Validator::isValidROPhoneNumber, PHONE_INVALID_DEFAULT, view::clearPhoneErrors, DO_NOTHING, view::showPhoneInvalidError));
 
         return Observable.combineLatest(firstNameObs, lastNameObs, emailObs, cnpObs, addressObs, countyObs, phoneObs,
                 (firstName, lastName, email, cnp, address, county, phone) -> {
-                    if (fieldsNotEmpty(firstName, lastName, email, cnp, address, county)) {
+                    if (fieldsNotEmpty(firstName, lastName, email, cnp, address, county) && !PHONE_INVALID_DEFAULT.equals(phone)) {
                         return new Profile(firstName, lastName, email, cnp, address, county, phone);
                     }
 
                     return null;
                 })
-                .doOnNext(profile -> view.onProfileFormValidation(profile != null))
+                .doOnNext(profile -> {
+                    isFormValid = profile != null;
+                    hasFormUnsavedChanges = loadedProfile != null ? !loadedProfile.isEqualTo(profile) : isFormValid;
+                    notifyUpdates();
+                })
                 .filter(p -> p != null);
+    }
+
+    private void notifyUpdates() {
+        if (view != null) {
+            view.setFormStatus(isFormValid, hasFormUnsavedChanges);
+        }
+        if (updatesCallback != null) {
+            updatesCallback.call(isFormValid, hasFormUnsavedChanges);
+        }
     }
 
     private static boolean fieldsNotEmpty(String firstName, String lastName, String email, String cnp, String address, String county) {
@@ -65,8 +141,5 @@ public class ProfilePresenter extends BasePresenter<ProfileContract.View> implem
 
     private static final Action0 DO_NOTHING = () -> { };
 
-    @Override
-    public void bambam() {
-
-    }
+    private static final String PHONE_INVALID_DEFAULT = "whatever_just_no_valid_phone";
 }

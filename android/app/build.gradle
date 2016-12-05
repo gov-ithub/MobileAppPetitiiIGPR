@@ -22,8 +22,8 @@ android {
         applicationId "ro.politiaromana.petitie.mobile.android"
         minSdkVersion 16
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "0.3"
 //        multiDexEnabled true
         vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -49,10 +49,22 @@ android {
             versionNameSuffix '-DEBUG'
         }
 
+        alpha {
+            applicationIdSuffix '.alpha'
+            versionNameSuffix '-ALPHA'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+//        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
 }
 
@@ -81,8 +93,6 @@ dependencies {
     compile("com.mikepenz:materialdrawer:$rootProject.ext.materialDrawer") { transitive = true }
     compile "com.googlecode.libphonenumber:libphonenumber:$rootProject.ext.libPhoneNumber"
     compile "com.mikepenz:google-material-typeface:$rootProject.ext.materialTypefaces"
-//    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha4'
-//    compile "com.google.guava:guava:$rootProject.guavaVersion"
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Poliția Română - Petiții</string>
+    <string name="call_112">Pentru situații de urgență,  apelați 112</string>
+    <string name="action_new_petition">Petiție nouă</string>
+    <string name="action_next">Continuă</string>
+    <string name="action_no">Nu</string>
+    <string name="action_save">Salvează</string>
+    <string name="action_settings">Setări</string>
+    <string name="action_yes">Da</string>
+    <string name="drawer_item_about">Despre</string>
+    <string name="drawer_item_feedback">Trimite feedback</string>
+    <string name="drawer_item_invite_friends">Invită prieteni</string>
+    <string name="drawer_item_legislation">Legislație</string>
+    <string name="drawer_item_profile">Profil</string>
+    <string name="error_address_is_required">Adresa este obligatorie</string>
+    <string name="error_cnp_is_invalid">CNP invalid</string>
+    <string name="error_cnp_is_required">CNP este obligatoriu</string>
+    <string name="error_email_is_invalid">Email invalid</string>
+    <string name="error_email_is_required">Email-ul este obligatoriu</string>
+    <string name="error_first_name_is_required">Prenumele este obligatoriu</string>
+    <string name="error_last_name_is_required">Numele este obligatoriu</string>
+    <string name="error_phone_is_invalid">Numărul este invalid</string>
+    <string name="open_source_licenses">Licențe open-source</string>
+    <string name="privacy_policy">Politca de confidențialitate</string>
+    <string name="profile_cnp">CNP</string>
+    <string name="profile_county">Județ</string>
+    <string name="profile_email">Email</string>
+    <string name="profile_first_name">Prenume</string>
+    <string name="profile_home_address">Adresă domiciliu</string>
+    <string name="profile_last_name">Nume</string>
+    <string name="profile_phone">Telefon (opțional)</string>
+    <string name="profile_save_changes_message">Altfel, modificările efectuate se vor pierde</string>
+    <string name="profile_save_changes_title">Salvează modificările?</string>
+    <string name="profile_saving">Se salvează datele de profil</string>
+    <string name="terms_of_service">Termeni și condiții</string>
+    <string-array name="petition_steps">
+        <item>Profil</item>
+        <item>Detaliile petiției</item>
+    </string-array>
+</resources>
