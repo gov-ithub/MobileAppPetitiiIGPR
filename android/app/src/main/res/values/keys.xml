@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="key_privacy_policy">key_privacy_policy</string>
+    <string name="key_terms_of_service">key_terms_of_service</string>
+    <string name="key_open_source">key_open_source</string>
+    <string name="key_build_version">key_build_version</string>
+</resources>

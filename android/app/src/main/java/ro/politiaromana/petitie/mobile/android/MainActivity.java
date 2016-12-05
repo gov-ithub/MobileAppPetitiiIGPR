@@ -17,6 +17,7 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+import ro.politiaromana.petitie.mobile.android.about.AboutActivity;
 import ro.politiaromana.petitie.mobile.android.databinding.ActivityMainBinding;
 import ro.politiaromana.petitie.mobile.android.petition.PetitionActivity;
 import ro.politiaromana.petitie.mobile.android.profile.ProfileActivity;

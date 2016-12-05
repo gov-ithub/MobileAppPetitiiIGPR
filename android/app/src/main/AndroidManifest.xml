@@ -24,7 +24,7 @@
             android:name=".profile.ProfileActivity"
             android:label="@string/drawer_item_profile" />
         <activity
-            android:name=".AboutActivity"
+            android:name=".about.AboutActivity"
             android:label="@string/drawer_item_about" />
         <activity
             android:name=".FAQActivity"
