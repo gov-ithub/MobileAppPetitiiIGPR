@@ -2,6 +2,7 @@ package ro.politiaromana.petitie.mobile.android.ticket;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,9 @@ import java.util.List;
 
 import ro.politiaromana.petitie.mobile.android.R;
 import ro.politiaromana.petitie.mobile.android.databinding.FragmentTicketBinding;
+import ro.politiaromana.petitie.mobile.android.model.Profile;
+import ro.politiaromana.petitie.mobile.android.model.RealmString;
+import ro.politiaromana.petitie.mobile.android.model.Ticket;
 import ro.politiaromana.petitie.mobile.android.util.CameraUtil;
 import ro.politiaromana.petitie.mobile.android.util.RxUi;
 import rx.Observable;
@@ -71,6 +75,10 @@ public class TicketFragment extends Fragment implements TicketContract.View {
         binding.image3.setOnClickListener(v ->
                 mCurrentPhotoFile = CameraUtil.dispatchTakePictureIntent(TicketFragment.this,
                 REQUEST_IMAGE_CAPTURE_3)
+        );
+
+        binding.sendTicket.setOnClickListener(v ->
+                showEmailClient(new Profile(), new Ticket())
         );
 
         this.presenter = new TicketPresenter();
@@ -145,5 +153,24 @@ public class TicketFragment extends Fragment implements TicketContract.View {
 
     @Override public void onTicketFormValidation(boolean isValid) {
         Toast.makeText(getContext(), "valid: " + isValid, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override public void showEmailClient(Profile profile, Ticket ticket) {
+        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+        emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        emailIntent.setType("vnd.android.cursor.item/email");
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {"abc@xyz.com"});
+        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, ticket.typeStringValue);
+        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, ticket.description);
+
+        ArrayList<Uri> uriList = new ArrayList<>();
+        if(ticket.attachmentPathList != null) {
+            for (RealmString path : ticket.attachmentPathList) {
+                uriList.add(Uri.parse(path.val));
+            }
+        }
+        emailIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriList);
+
+        startActivity(Intent.createChooser(emailIntent, getString(R.string.chooser_title)));
     }
 }

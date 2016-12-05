@@ -41,5 +41,6 @@
     <string name="description">Description</string>
 
     <string name="error_description_required">Description is required</string>
+    <string name="chooser_title">Send mail using...</string>
     <!--endregion-->
 </resources>

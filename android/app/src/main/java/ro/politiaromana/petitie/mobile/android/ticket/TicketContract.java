@@ -2,6 +2,8 @@ package ro.politiaromana.petitie.mobile.android.ticket;
 
 import java.util.List;
 
+import ro.politiaromana.petitie.mobile.android.model.Profile;
+import ro.politiaromana.petitie.mobile.android.model.Ticket;
 import ro.politiaromana.petitie.mobile.android.util.AbsPresenter;
 import rx.Observable;
 
@@ -23,6 +25,7 @@ public interface TicketContract {
         void clearDescriptionError();
 
         void onTicketFormValidation(boolean pB);
+        void showEmailClient(Profile profile, Ticket ticket);
     }
 
     interface Presenter extends AbsPresenter<View> {

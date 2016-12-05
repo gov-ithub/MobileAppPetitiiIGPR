@@ -63,4 +63,8 @@ public class TicketPresenter extends BasePresenter<TicketContract.View>
                 .map(RealmString::new)
                 .toList();
     }
+
+    public ConnectableObservable<Ticket> getTicketFormObservable() {
+        return ticketFormObservable;
+    }
 }
