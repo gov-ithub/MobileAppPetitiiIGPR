@@ -38,4 +38,5 @@
         <item>Profil</item>
         <item>Detaliile petiției</item>
     </string-array>
+    <string name="build_version">Versiunea aplicației</string>
 </resources>

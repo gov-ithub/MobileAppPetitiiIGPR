@@ -2,15 +2,15 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <Preference
         android:key="@string/key_build_version"
-        android:title="Build version"/>
+        android:title="@string/build_version"/>
     <Preference
         android:key="@string/key_privacy_policy"
-        android:title="Privacy Policy"/>
+        android:title="@string/privacy_policy"/>
     <Preference
         android:key="@string/key_terms_of_service"
-        android:title="Terms of Service"/>
+        android:title="@string/terms_of_service"/>
     <Preference
         android:key="@string/key_open_source"
-        android:title="Open Source Licenses"
+        android:title="@string/open_source_licenses"
         android:summary="License details for open source software"/>
 </PreferenceScreen>
