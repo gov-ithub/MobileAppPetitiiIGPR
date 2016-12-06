@@ -56,6 +56,7 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="terms_of_service">Terms of service</string>
     <string name="open_source_licenses">Open-source licenses</string>
+    <string name="build_version">Build version</string>
     <string name="call_112">In case of emergency, CALL 112</string>
     <!--endregion -->
 

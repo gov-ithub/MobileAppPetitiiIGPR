@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="politiaromana_StepIndicator">@style/Widget.StepIndicator</item>
         <item name="politiaromana_StepIndicator.Step">@style/Widget.StepIndicator.Step</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

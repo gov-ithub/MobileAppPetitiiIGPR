@@ -76,6 +76,7 @@ dependencies {
     compile "com.android.support:multidex:$rootProject.ext.multidex"
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibrary"
     compile "com.android.support:support-v4:$rootProject.ext.supportLibrary"
+    compile "com.android.support:preference-v14:$rootProject.supportLibrary"
     compile "com.android.support:design:$rootProject.ext.supportLibrary"
     compile "com.google.firebase:firebase-core:$rootProject.ext.play"
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
