@@ -38,7 +38,6 @@
         <activity
             android:name=".petition.PetitionActivity"
             android:label="@string/action_new_petition" />
-        <activity android:name=".ticket.TicketActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

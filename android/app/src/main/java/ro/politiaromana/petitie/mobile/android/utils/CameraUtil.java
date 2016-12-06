@@ -1,4 +1,4 @@
-package ro.politiaromana.petitie.mobile.android.util;
+package ro.politiaromana.petitie.mobile.android.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,13 +12,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by andrei.
- */
-
 public class CameraUtil {
 
-    private CameraUtil(){}
+    private CameraUtil() {}
 
     private static File createImageFile(Context context) throws IOException {
         // Create an image file name
@@ -32,7 +28,7 @@ public class CameraUtil {
         );
     }
 
-    public static File dispatchTakePictureIntent(Fragment fragment, final int requestCode){
+    public static File dispatchTakePictureIntent(Fragment fragment, final int requestCode) {
         Context context = fragment.getActivity();
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
@@ -54,6 +50,4 @@ public class CameraUtil {
         }
         return null;
     }
-
-
 }

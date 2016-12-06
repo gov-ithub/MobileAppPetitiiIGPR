@@ -30,17 +30,13 @@ import ro.politiaromana.petitie.mobile.android.databinding.FragmentTicketBinding
 import ro.politiaromana.petitie.mobile.android.model.Profile;
 import ro.politiaromana.petitie.mobile.android.model.RealmString;
 import ro.politiaromana.petitie.mobile.android.model.Ticket;
-import ro.politiaromana.petitie.mobile.android.util.CameraUtil;
+import ro.politiaromana.petitie.mobile.android.utils.CameraUtil;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 import static com.mikepenz.iconics.Iconics.TAG;
 
-/**
- * Created by andrei.
- */
-
-public class TicketFragment extends Fragment implements TicketContract.View {
+public class TicketFragment extends Fragment implements TicketDetailsContract.View {
 
     private static final int REQUEST_IMAGE_CAPTURE_1 = 1;
     private static final int REQUEST_IMAGE_CAPTURE_2 = 2;
@@ -50,27 +46,21 @@ public class TicketFragment extends Fragment implements TicketContract.View {
     private static final String KEY_PROFILE = "key_profile";
 
     private FragmentTicketBinding binding;
-    private TicketContract.Presenter presenter;
+    private TicketDetailsContract.Presenter presenter;
     private CharSequence[] ticketTypeArray;
     private List<String> attachmentPathList;
 
     private File mCurrentPhotoFile;
 
-    public static TicketFragment newInstance(Profile profile) {
-        Bundle args = new Bundle();
-        args.putSerializable(KEY_PROFILE,profile);
-        TicketFragment fragment = new TicketFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.ticketTypeArray = getResources().getTextArray(R.array.ticket_type_array);
         this.attachmentPathList = new ArrayList<>();
     }
 
-    @Nullable @Override
+    @Nullable
+    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_ticket, container, false);
@@ -82,38 +72,33 @@ public class TicketFragment extends Fragment implements TicketContract.View {
 
         binding.image1.setOnClickListener(v ->
                 mCurrentPhotoFile = CameraUtil.dispatchTakePictureIntent(TicketFragment.this,
-                REQUEST_IMAGE_CAPTURE_1)
+                        REQUEST_IMAGE_CAPTURE_1)
         );
         binding.image2.setOnClickListener(v ->
                 mCurrentPhotoFile = CameraUtil.dispatchTakePictureIntent(TicketFragment.this,
-                REQUEST_IMAGE_CAPTURE_2)
+                        REQUEST_IMAGE_CAPTURE_2)
         );
         binding.image3.setOnClickListener(v ->
                 mCurrentPhotoFile = CameraUtil.dispatchTakePictureIntent(TicketFragment.this,
-                REQUEST_IMAGE_CAPTURE_3)
+                        REQUEST_IMAGE_CAPTURE_3)
         );
 
         binding.sendTicket.setOnClickListener(v -> presenter.onSendButtonClicked());
 
         binding.iconLocation.setOnClickListener(v -> presenter.onLocationIconClicked());
 
-        Profile profile = new Profile();
-
-        if(getArguments() != null){
-            profile = ((Profile) getArguments().getSerializable(KEY_PROFILE));
-        }
-
-        this.presenter = new TicketPresenter(profile);
+        this.presenter = new TicketPresenter();
         this.presenter.takeView(this);
 
         return binding.getRoot();
     }
 
-    @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode != RESULT_OK
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != RESULT_OK
                 && (requestCode == REQUEST_IMAGE_CAPTURE_1
                 || requestCode == REQUEST_IMAGE_CAPTURE_2
-                || requestCode == REQUEST_IMAGE_CAPTURE_3)){
+                || requestCode == REQUEST_IMAGE_CAPTURE_3)) {
             onImageFailure();
             return;
         }
@@ -126,7 +111,7 @@ public class TicketFragment extends Fragment implements TicketContract.View {
         if (requestCode == REQUEST_IMAGE_CAPTURE_3 && resultCode == RESULT_OK) {
             this.onImageSuccess(binding.image3);
         }
-        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE){
+        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 Place place = PlaceAutocomplete.getPlace(getActivity(), data);
                 binding.addressInput.setText(place.getAddress());
@@ -149,14 +134,15 @@ public class TicketFragment extends Fragment implements TicketContract.View {
         mCurrentPhotoFile = null;
     }
 
-    private void onImageFailure(){
-        if(mCurrentPhotoFile != null){
+    private void onImageFailure() {
+        if (mCurrentPhotoFile != null) {
             mCurrentPhotoFile.delete();
             mCurrentPhotoFile = null;
         }
     }
 
-    @Override public void showChoosePlaceScreen(){
+    @Override
+    public void showChoosePlaceScreen() {
         try {
             Intent intent =
                     new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
@@ -168,40 +154,48 @@ public class TicketFragment extends Fragment implements TicketContract.View {
         }
     }
 
-    @Override public void onDestroyView() {
+    @Override
+    public void onDestroyView() {
         super.onDestroyView();
         presenter.dropView();
     }
 
-    @Override public String getType() {
+    @Override
+    public String getTicketType() {
         return ((String) binding.ticketTypeSpinner.getSelectedItem());
     }
 
-    @Override public List<String> getAttachmentList() {
+    @Override
+    public List<String> getAttachmentList() {
         return attachmentPathList;
     }
 
-    @Override public String getAddress() {
+    @Override
+    public String getAddress() {
         return binding.addressInput.getText().toString();
     }
 
-    @Override public String getDescription() {
+    @Override
+    public String getDescription() {
         return binding.descriptionInput.getText().toString();
     }
 
-    @Override public void showDescriptionError() {
+    @Override
+    public void showDescriptionRequiredError() {
         binding.descriptionInputLayout.setError(getString(R.string.error_description_required));
     }
 
-    @Override public void clearDescriptionError(){
+    @Override
+    public void clearDescriptionErrors() {
         binding.descriptionInputLayout.setError(null);
     }
 
-    @Override public void showEmailClient(Profile profile, Ticket ticket) {
+    @Override
+    public void showEmailClient(Profile profile, Ticket ticket) {
         Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
         emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         emailIntent.setType("vnd.android.cursor.item/email");
-        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {"abc@xyz.com"});
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"abc@xyz.com"});
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, ticket.typeStringValue);
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Prenume: ").append(profile.firstName).append("\n");

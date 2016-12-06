@@ -4,11 +4,6 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.widget.ImageView;
-
-/**
- * Created by andrei.
- */
 
 public class SquareImageView extends AppCompatImageView {
 
@@ -24,7 +19,8 @@ public class SquareImageView extends AppCompatImageView {
         super(context, attrs, defStyleAttr);
     }
 
-    @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         int width = getMeasuredWidth();

@@ -30,7 +30,7 @@ public final class Validator {
 
     public static boolean isValidCNP(@NonNull final String cnpString) {
         int[] cnp = new int[13];
-        int[] control = {2,7,9,1,4,6,3,5,8,2,7,9};
+        int[] control = {2, 7, 9, 1, 4, 6, 3, 5, 8, 2, 7, 9};
         if (cnpString.length() != 13) {
             return false;
         }

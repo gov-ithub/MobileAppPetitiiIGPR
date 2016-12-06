@@ -1,57 +1,43 @@
 package ro.politiaromana.petitie.mobile.android.ticket;
 
-import android.support.annotation.NonNull;
-
 import io.realm.RealmList;
 import ro.politiaromana.petitie.mobile.android.model.Profile;
 import ro.politiaromana.petitie.mobile.android.model.RealmString;
 import ro.politiaromana.petitie.mobile.android.model.Ticket;
-import ro.politiaromana.petitie.mobile.android.util.BasePresenter;
+import ro.politiaromana.petitie.mobile.android.utils.BasePresenter;
 
-/**
- * Created by andrei.
- */
 
-public class TicketPresenter extends BasePresenter<TicketContract.View>
-        implements TicketContract.Presenter {
+public class TicketPresenter extends BasePresenter<TicketDetailsContract.View> implements TicketDetailsContract.Presenter {
 
-    private Profile profile;
-
-    public TicketPresenter(Profile profile){
-        this.profile = profile;
-    }
-
-    @Override public void takeView(@NonNull TicketContract.View view) {
-        super.takeView(view);
-    }
-
-    @Override public void onSendButtonClicked() {
-        if(validateForm()){
+    @Override
+    public void onSendButtonClicked() {
+        if (validateForm()) {
             Ticket ticket = new Ticket();
             ticket.address = view.getAddress();
             ticket.description = view.getDescription();
-            ticket.typeStringValue = view.getType();
+            ticket.typeStringValue = view.getTicketType();
             ticket.attachmentPathList = new RealmList<>();
-            for(String path : view.getAttachmentList()){
+            for (String path : view.getAttachmentList()) {
                 ticket.attachmentPathList.add(new RealmString(path));
             }
-            view.showEmailClient(profile, ticket);
+            view.showEmailClient(new Profile(), ticket);
         }
     }
 
-    @Override public void onLocationIconClicked() {
+    @Override
+    public void onLocationIconClicked() {
         view.showChoosePlaceScreen();
     }
 
     private boolean validateForm() {
-        if(view.getType() == null || view.getType().isEmpty()){
+        if (view.getTicketType() == null || view.getTicketType().isEmpty()) {
             return false;
         }
-        if(view.getDescription() == null || view.getDescription().isEmpty()){
-            view.showDescriptionError();
+        if (view.getDescription() == null || view.getDescription().isEmpty()) {
+            view.showDescriptionRequiredError();
             return false;
         }
-        view.clearDescriptionError();
+        view.clearDescriptionErrors();
         return true;
     }
 }
