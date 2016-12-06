@@ -14,10 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingLeft="@dimen/spacing_normal"
+        android:paddingRight="@dimen/spacing_normal"
         tools:context=".profile.ProfileFragment">
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/last_name_input_layout"
+            style="@style/Widget.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
@@ -35,6 +38,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/first_name_input_layout"
+            style="@style/Widget.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
@@ -52,6 +56,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/email_input_layout"
+            style="@style/Widget.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
@@ -69,6 +74,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/cnp_input_layout"
+            style="@style/Widget.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
@@ -87,6 +93,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/address_input_layout"
+            style="@style/Widget.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
@@ -128,6 +135,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/phone_input_layout"
+            style="@style/Widget.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"

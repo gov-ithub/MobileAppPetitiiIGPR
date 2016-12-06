@@ -34,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="@dimen/padding_normal"
-                android:text="@string/call_112" />
+                android:text="@string/call_112"
+                android:textColor="@color/md_red_500" />
 
             <Button
                 android:id="@+id/new_petition_button"

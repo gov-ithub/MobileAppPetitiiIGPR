@@ -28,7 +28,7 @@ import ro.politiaromana.petitie.mobile.android.profile.ProfileFragment;
 import ro.politiaromana.petitie.mobile.android.profile.ProfilePresenter;
 import ro.politiaromana.petitie.mobile.android.ticket.TicketDetailsContract;
 import ro.politiaromana.petitie.mobile.android.ticket.TicketFragment;
-import ro.politiaromana.petitie.mobile.android.ticket.TicketPresenter;
+import ro.politiaromana.petitie.mobile.android.ticket.TicketDetailsPresenter;
 import ro.politiaromana.petitie.mobile.android.utils.ActivityUtils;
 
 
@@ -140,7 +140,7 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
     }
 
     private void nextPetitionFragment() {
-        ticketDetailsPresenter = new TicketPresenter();
+        ticketDetailsPresenter = new TicketDetailsPresenter();
         ticketDetailsPresenter.setOnSendCallback(ticket -> {
             new GetProfileFromStorage().call()
                     .subscribe(profile -> showEmailClient(profile, ticket));

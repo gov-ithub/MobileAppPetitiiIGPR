@@ -10,7 +10,7 @@ import ro.politiaromana.petitie.mobile.android.utils.JavaUtils;
 import rx.functions.Action1;
 
 
-public class TicketPresenter extends BasePresenter<TicketDetailsContract.View> implements TicketDetailsContract.Presenter {
+public class TicketDetailsPresenter extends BasePresenter<TicketDetailsContract.View> implements TicketDetailsContract.Presenter {
 
     @Nullable
     private Action1<Ticket> callback;
