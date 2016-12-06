@@ -1,17 +1,28 @@
 package ro.politiaromana.petitie.mobile.android.ticket;
 
+import android.support.annotation.Nullable;
+
 import io.realm.RealmList;
-import ro.politiaromana.petitie.mobile.android.model.Profile;
 import ro.politiaromana.petitie.mobile.android.model.RealmString;
 import ro.politiaromana.petitie.mobile.android.model.Ticket;
 import ro.politiaromana.petitie.mobile.android.utils.BasePresenter;
+import ro.politiaromana.petitie.mobile.android.utils.JavaUtils;
+import rx.functions.Action1;
 
 
 public class TicketPresenter extends BasePresenter<TicketDetailsContract.View> implements TicketDetailsContract.Presenter {
 
+    @Nullable
+    private Action1<Ticket> callback;
+
+    @Override
+    public void setOnSendCallback(@Nullable Action1<Ticket> callback) {
+        this.callback = callback;
+    }
+
     @Override
     public void onSendButtonClicked() {
-        if (validateForm()) {
+        if (callback != null && validateForm()) {
             Ticket ticket = new Ticket();
             ticket.address = view.getAddress();
             ticket.description = view.getDescription();
@@ -20,7 +31,9 @@ public class TicketPresenter extends BasePresenter<TicketDetailsContract.View> i
             for (String path : view.getAttachmentList()) {
                 ticket.attachmentPathList.add(new RealmString(path));
             }
-            view.showEmailClient(new Profile(), ticket);
+
+            callback.call(ticket);
+//            view.showEmailClient(new Profile(), ticket);
         }
     }
 
@@ -30,10 +43,10 @@ public class TicketPresenter extends BasePresenter<TicketDetailsContract.View> i
     }
 
     private boolean validateForm() {
-        if (view.getTicketType() == null || view.getTicketType().isEmpty()) {
+        if (JavaUtils.isEmpty(view.getTicketType())) {
             return false;
         }
-        if (view.getDescription() == null || view.getDescription().isEmpty()) {
+        if (JavaUtils.isEmpty(view.getDescription())) {
             view.showDescriptionRequiredError();
             return false;
         }

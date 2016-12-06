@@ -1,9 +1,10 @@
 package ro.politiaromana.petitie.mobile.android.petition;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -11,25 +12,33 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import io.realm.Realm;
+import java.io.File;
+import java.util.ArrayList;
+
 import io.realm.RealmConfiguration;
 import ro.politiaromana.petitie.mobile.android.R;
 import ro.politiaromana.petitie.mobile.android.databinding.ActivityPetitionBinding;
 import ro.politiaromana.petitie.mobile.android.domain.GetProfileFromStorage;
-import ro.politiaromana.petitie.mobile.android.domain.SaveProfileTo;
+import ro.politiaromana.petitie.mobile.android.domain.SaveProfileToStorage;
+import ro.politiaromana.petitie.mobile.android.model.Profile;
+import ro.politiaromana.petitie.mobile.android.model.RealmString;
+import ro.politiaromana.petitie.mobile.android.model.Ticket;
 import ro.politiaromana.petitie.mobile.android.profile.ProfileContract;
 import ro.politiaromana.petitie.mobile.android.profile.ProfileFragment;
 import ro.politiaromana.petitie.mobile.android.profile.ProfilePresenter;
+import ro.politiaromana.petitie.mobile.android.ticket.TicketDetailsContract;
+import ro.politiaromana.petitie.mobile.android.ticket.TicketFragment;
+import ro.politiaromana.petitie.mobile.android.ticket.TicketPresenter;
 import ro.politiaromana.petitie.mobile.android.utils.ActivityUtils;
 
 
 public class PetitionActivity extends AppCompatActivity implements PetitionContract.View {
 
-    private Realm tempRealm;
+//    private Realm tempRealm;
 
     private ActivityPetitionBinding binding;
-    private PetitionContract.Presenter presenter;
     private ProfileContract.Presenter profilePresenter;
+    private TicketDetailsContract.Presenter ticketDetailsPresenter;
 
     private boolean isMenuNextVisible = true;
 
@@ -39,11 +48,7 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
         binding = DataBindingUtil.setContentView(this, R.layout.activity_petition);
         ActivityUtils.setupSimpleToolbar(this, binding.toolbar);
 
-        tempRealm = Realm.getInstance(configureInMemoryRealm());
-
-        presenter = new PetitionPresenter();
-
-        presenter.takeView(this);
+//        tempRealm = Realm.getInstance(configureInMemoryRealm());
 
         String[] steps = getResources().getStringArray(R.array.petition_steps);
         binding.stepIndicator.setStepNames(steps);
@@ -62,12 +67,12 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem next = menu.findItem(R.id.action_next);
-        MenuItem send = menu.findItem(R.id.action_send);
+//        MenuItem send = menu.findItem(R.id.action_send);
 
         next.setEnabled(profilePresenter.isValid());
         next.setVisible(isMenuNextVisible);
 
-        send.setVisible(!isMenuNextVisible);
+//        send.setVisible(!isMenuNextVisible);
 
         return true;
     }
@@ -111,7 +116,7 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        tempRealm.close();
+//        tempRealm.close();
     }
 
     private void initiatePetitionFlow() {
@@ -123,7 +128,7 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
         }
         fm.executePendingTransactions();
 
-        profilePresenter = new ProfilePresenter(new GetProfileFromStorage(), new SaveProfileTo(tempRealm.getConfiguration()));
+        profilePresenter = new ProfilePresenter(new GetProfileFromStorage(), new SaveProfileToStorage());
         profilePresenter.setUpdatesCallback((isValid, hasUnsavedChanges) -> supportInvalidateOptionsMenu());
 
         profileFragment = new ProfileFragment();
@@ -135,9 +140,16 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
     }
 
     private void nextPetitionFragment() {
-        Fragment petitionFragment = new PetitionFragment();
+        ticketDetailsPresenter = new TicketPresenter();
+        ticketDetailsPresenter.setOnSendCallback(ticket -> {
+            new GetProfileFromStorage().call()
+                    .subscribe(profile -> showEmailClient(profile, ticket));
+        });
+
+        TicketFragment ticketFragment = new TicketFragment();
+        ticketFragment.setPresenter(ticketDetailsPresenter);
         getTransactionWithAnimations()
-                .replace(R.id.petition_steps_container, petitionFragment, PetitionFragment.class.getSimpleName())
+                .replace(R.id.petition_steps_container, ticketFragment, TicketFragment.class.getSimpleName())
                 .addToBackStack("petitions")
                 .commit();
         binding.stepIndicator.nextStep();
@@ -156,5 +168,34 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
                 .deleteRealmIfMigrationNeeded()
                 .inMemory()
                 .build();
+    }
+
+    public void showEmailClient(Profile profile, Ticket ticket) {
+        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+        emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        emailIntent.setType("vnd.android.cursor.item/email");
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"abc@xyz.com"});
+        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, ticket.typeStringValue);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Prenume: ").append(profile.firstName).append("\n");
+        stringBuilder.append("Nume: ").append(profile.lastName).append("\n");
+        stringBuilder.append("Email: ").append(profile.email).append("\n");
+        stringBuilder.append("CNP: ").append(profile.cnp).append("\n");
+        stringBuilder.append("Adresa domiciliu: ").append(profile.address).append("\n");
+        stringBuilder.append("Judet: ").append(profile.county).append("\n");
+        stringBuilder.append("Telefon: ").append(profile.phone).append("\n\n");
+        stringBuilder.append("Locatie petitie: ").append(ticket.address).append("\n");
+        stringBuilder.append("Mesaj: ").append(ticket.description);
+        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, stringBuilder.toString());
+
+        ArrayList<Uri> uriList = new ArrayList<>();
+        for (RealmString path : ticket.attachmentPathList) {
+            File file = new File(path.val);
+            uriList.add(Uri.fromFile(file));
+        }
+        emailIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
+        emailIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriList);
+
+        startActivity(Intent.createChooser(emailIntent, getString(R.string.chooser_title)));
     }
 }

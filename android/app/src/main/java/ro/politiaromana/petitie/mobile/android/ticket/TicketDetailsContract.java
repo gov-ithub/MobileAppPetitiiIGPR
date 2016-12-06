@@ -8,11 +8,14 @@ import java.util.List;
 import ro.politiaromana.petitie.mobile.android.model.Profile;
 import ro.politiaromana.petitie.mobile.android.model.Ticket;
 import ro.politiaromana.petitie.mobile.android.utils.AbsPresenter;
+import rx.functions.Action1;
 
 
 public interface TicketDetailsContract {
 
     interface View {
+
+        void setPresenter(@NonNull TicketDetailsContract.Presenter presenter);
 
         @NonNull
         String getTicketType();
@@ -36,6 +39,8 @@ public interface TicketDetailsContract {
     }
 
     interface Presenter extends AbsPresenter<View> {
+
+        void setOnSendCallback(@Nullable Action1<Ticket> callback);
 
         void onSendButtonClicked();
 

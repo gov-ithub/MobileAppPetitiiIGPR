@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -48,7 +49,7 @@ public class TicketFragment extends Fragment implements TicketDetailsContract.Vi
     private FragmentTicketBinding binding;
     private TicketDetailsContract.Presenter presenter;
     private CharSequence[] ticketTypeArray;
-    private List<String> attachmentPathList;
+    private List<String> attachmentPathList = new ArrayList<>(4);
 
     private File mCurrentPhotoFile;
 
@@ -56,7 +57,11 @@ public class TicketFragment extends Fragment implements TicketDetailsContract.Vi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.ticketTypeArray = getResources().getTextArray(R.array.ticket_type_array);
-        this.attachmentPathList = new ArrayList<>();
+    }
+
+    @Override
+    public void setPresenter(@NonNull TicketDetailsContract.Presenter presenter) {
+        this.presenter = presenter;
     }
 
     @Nullable
@@ -87,7 +92,6 @@ public class TicketFragment extends Fragment implements TicketDetailsContract.Vi
 
         binding.iconLocation.setOnClickListener(v -> presenter.onLocationIconClicked());
 
-        this.presenter = new TicketPresenter();
         this.presenter.takeView(this);
 
         return binding.getRoot();

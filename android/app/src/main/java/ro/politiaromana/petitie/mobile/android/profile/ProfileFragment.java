@@ -31,9 +31,6 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
     private ProfileContract.Presenter presenter;
     private CharSequence[] counties;
 
-    private boolean isValid;
-    private boolean shouldSave = false;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -229,9 +226,6 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
     }
 
     @Override
-    public void setFormStatus(boolean isValid, boolean shouldSave) {
-        this.isValid = isValid;
-        this.shouldSave = shouldSave;
-    }
+    public void setFormStatus(boolean isValid, boolean shouldSave) { }
     //endregion
 }
