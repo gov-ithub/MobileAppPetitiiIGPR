@@ -3,6 +3,9 @@
     package="ro.politiaromana.petitie.mobile.android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:name=".PetitionsApp"
@@ -35,6 +38,12 @@
         <activity
             android:name=".petition.PetitionActivity"
             android:label="@string/action_new_petition" />
+        <activity android:name=".ticket.TicketActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDVvsAJ_Qvvd1hKVT-ZyVm0zS_guUwxxiA" />
+
     </application>
 
 </manifest>

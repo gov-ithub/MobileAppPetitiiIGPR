@@ -59,4 +59,17 @@
     <string name="call_112">In case of emergency, CALL 112</string>
     <!--endregion -->
 
+    <!--region TICKET-->
+    <string name="ticket_type">Ticket type</string>
+    <string name="add_photos">Add photos</string>
+    <string name="send_ticket">Send ticket</string>
+    <string name="ticket_address">Ticket Address</string>
+    <string name="description">Description</string>
+
+    <string name="error_description_required">Description is required</string>
+    <string name="chooser_title">Send mail using...</string>
+    <string name="error_google_play_services">Can\'t find Google Play Services</string>
+    <string name="error_place_not_found">Can\'t find this place</string>
+    <!--endregion-->
+
 </resources>

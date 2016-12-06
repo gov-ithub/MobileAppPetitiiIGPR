@@ -48,4 +48,6 @@ ext {
     materialDrawer = '5.8.0@aar'
     materialTypefaces = '2.2.0.3.original@aar'
     libPhoneNumber = '7.7.5'
+    glide = '3.7.0'
+    playServicesVersion = '9.8.0'
 }
