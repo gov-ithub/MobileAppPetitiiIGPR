@@ -27,8 +27,8 @@ import ro.politiaromana.petitie.mobile.android.profile.ProfileContract;
 import ro.politiaromana.petitie.mobile.android.profile.ProfileFragment;
 import ro.politiaromana.petitie.mobile.android.profile.ProfilePresenter;
 import ro.politiaromana.petitie.mobile.android.ticket.TicketDetailsContract;
-import ro.politiaromana.petitie.mobile.android.ticket.TicketFragment;
 import ro.politiaromana.petitie.mobile.android.ticket.TicketDetailsPresenter;
+import ro.politiaromana.petitie.mobile.android.ticket.TicketFragment;
 import ro.politiaromana.petitie.mobile.android.utils.ActivityUtils;
 
 
@@ -54,8 +54,6 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
         binding.stepIndicator.setStepNames(steps);
 
         initiatePetitionFlow();
-
-        Toast.makeText(this, "In progress!", Toast.LENGTH_LONG).show();
     }
 
     @Override

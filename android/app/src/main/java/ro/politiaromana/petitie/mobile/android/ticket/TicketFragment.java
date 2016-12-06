@@ -2,7 +2,6 @@ package ro.politiaromana.petitie.mobile.android.ticket;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,9 +27,6 @@ import java.util.List;
 
 import ro.politiaromana.petitie.mobile.android.R;
 import ro.politiaromana.petitie.mobile.android.databinding.FragmentTicketBinding;
-import ro.politiaromana.petitie.mobile.android.model.Profile;
-import ro.politiaromana.petitie.mobile.android.model.RealmString;
-import ro.politiaromana.petitie.mobile.android.model.Ticket;
 import ro.politiaromana.petitie.mobile.android.utils.CameraUtil;
 
 import static android.app.Activity.RESULT_CANCELED;
@@ -195,32 +191,8 @@ public class TicketFragment extends Fragment implements TicketDetailsContract.Vi
     }
 
     @Override
-    public void showEmailClient(Profile profile, Ticket ticket) {
-        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-        emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        emailIntent.setType("vnd.android.cursor.item/email");
-        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"abc@xyz.com"});
-        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, ticket.typeStringValue);
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Prenume: ").append(profile.firstName).append("\n");
-        stringBuilder.append("Nume: ").append(profile.lastName).append("\n");
-        stringBuilder.append("Email: ").append(profile.email).append("\n");
-        stringBuilder.append("CNP: ").append(profile.cnp).append("\n");
-        stringBuilder.append("Adresa domiciliu: ").append(profile.address).append("\n");
-        stringBuilder.append("Judet: ").append(profile.county).append("\n");
-        stringBuilder.append("Telefon: ").append(profile.phone).append("\n\n");
-        stringBuilder.append("Locatie petitie: ").append(ticket.address).append("\n");
-        stringBuilder.append("Mesaj: ").append(ticket.description);
-        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, stringBuilder.toString());
-
-        ArrayList<Uri> uriList = new ArrayList<>();
-        for (RealmString path : ticket.attachmentPathList) {
-            File file = new File(path.val);
-            uriList.add(Uri.fromFile(file));
-        }
-        emailIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
-        emailIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uriList);
-
-        startActivity(Intent.createChooser(emailIntent, getString(R.string.chooser_title)));
+    public void onEmailSent() {
+        binding.sendTicket.setText(R.string.action_done);
+        binding.sendTicket.setOnClickListener(v -> getActivity().finish());
     }
 }

@@ -35,8 +35,14 @@
     <string name="profile_saving">Se salvează datele de profil</string>
     <string name="terms_of_service">Termeni și condiții</string>
     <string-array name="petition_steps">
-        <item>Profil</item>
-        <item>Detaliile petiției</item>
+        <item>Petent</item>
+        <item>Petiție</item>
     </string-array>
     <string name="build_version">Versiunea aplicației</string>
+    <string name="ticket_address">Adresă petiție (opțional)</string>
+    <string name="ticket_type">Tipul Petiției</string>
+    <string name="send_ticket">Trimite petiția</string>
+    <string name="action_done">Închide</string>
+    <string name="action_send">Trimite</string>
+    <string name="add_photos">Adaugă fotografii</string>
 </resources>

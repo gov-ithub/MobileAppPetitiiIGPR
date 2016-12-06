@@ -33,7 +33,7 @@ public class TicketDetailsPresenter extends BasePresenter<TicketDetailsContract.
             }
 
             callback.call(ticket);
-//            view.showEmailClient(new Profile(), ticket);
+            view.onEmailSent();
         }
     }
 

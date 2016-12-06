@@ -17,6 +17,7 @@
     <string name="action_save">Save</string>
     <string name="action_next">Next</string>
     <string name="action_send">Send</string>
+    <string name="action_done">Done</string>
     <string name="action_new_petition">New Petition</string>
     <!--endregion -->
 
@@ -64,7 +65,7 @@
     <string name="ticket_type">Ticket type</string>
     <string name="add_photos">Add photos</string>
     <string name="send_ticket">Send ticket</string>
-    <string name="ticket_address">Ticket Address</string>
+    <string name="ticket_address">Ticket Address (optional)</string>
     <string name="description">Description</string>
 
     <string name="error_description_required">Description is required</string>

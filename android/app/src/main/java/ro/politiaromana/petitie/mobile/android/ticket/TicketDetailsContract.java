@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 
 import java.util.List;
 
-import ro.politiaromana.petitie.mobile.android.model.Profile;
 import ro.politiaromana.petitie.mobile.android.model.Ticket;
 import ro.politiaromana.petitie.mobile.android.utils.AbsPresenter;
 import rx.functions.Action1;
@@ -33,7 +32,7 @@ public interface TicketDetailsContract {
 
         void clearDescriptionErrors();
 
-        void showEmailClient(Profile profile, Ticket ticket);
+        void onEmailSent();
 
         void showChoosePlaceScreen();
     }
