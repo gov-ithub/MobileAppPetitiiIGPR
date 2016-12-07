@@ -191,7 +191,9 @@ public class TicketDetailsFragment extends Fragment implements TicketDetailsCont
 
     @Override
     public void onEmailSent() {
-        binding.sendTicket.setText(R.string.action_done);
-        binding.sendTicket.setOnClickListener(v -> getActivity().finish());
+        binding.sendTicket.postDelayed(() -> {
+            binding.sendTicket.setText(R.string.action_done);
+            binding.sendTicket.setOnClickListener(v -> getActivity().finish());
+        }, 1000);
     }
 }

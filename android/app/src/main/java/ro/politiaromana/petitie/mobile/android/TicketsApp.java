@@ -7,7 +7,7 @@ import io.realm.RealmConfiguration;
 import timber.log.Timber;
 
 
-public class PetitionsApp extends MultiDexApplication {
+public class TicketsApp extends MultiDexApplication {
 
     @Override
     public void onCreate() {

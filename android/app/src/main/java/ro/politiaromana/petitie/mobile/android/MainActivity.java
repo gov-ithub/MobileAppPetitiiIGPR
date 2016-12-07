@@ -2,6 +2,7 @@ package ro.politiaromana.petitie.mobile.android;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IntDef;
 import android.support.v7.app.AppCompatActivity;
@@ -19,8 +20,8 @@ import java.lang.annotation.RetentionPolicy;
 
 import ro.politiaromana.petitie.mobile.android.about.AboutActivity;
 import ro.politiaromana.petitie.mobile.android.databinding.ActivityMainBinding;
-import ro.politiaromana.petitie.mobile.android.ticket.NewTicketActivity;
 import ro.politiaromana.petitie.mobile.android.profile.ProfileActivity;
+import ro.politiaromana.petitie.mobile.android.ticket.NewTicketActivity;
 import ro.politiaromana.petitie.mobile.android.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
         ActivityUtils.setupSimpleToolbar(this, binding.toolbar);
         setupDrawer();
+
+        binding.callEmergencyButton.setOnClickListener(v -> {
+            final Intent emergencyCall = new Intent(Intent.ACTION_DIAL, Uri.parse("tel://112"))
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+            startActivity(emergencyCall);
+        });
 
         binding.newPetitionButton.setOnClickListener(v -> startActivity(new Intent(this, NewTicketActivity.class)));
     }
@@ -56,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                         new SecondaryDrawerItem().withName(R.string.drawer_item_about).withIcon(GoogleMaterial.Icon.gmd_info).withSelectable(false).withIdentifier(DRAWER_ITEM_ABOUT)
                 )
                 .withSelectedItem(-1)
-                .withCloseOnClick(true)
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     @DrawerItem final int id = (int) drawerItem.getIdentifier();
                     switch (id) {
@@ -81,8 +87,10 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(new Intent(this, AboutActivity.class));
                             break;
                     }
-                    return true;
+
+                    return false;
                 })
+                .withCloseOnClick(true)
                 .build();
     }
 
