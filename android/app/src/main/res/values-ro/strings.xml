@@ -45,4 +45,5 @@
     <string name="action_done">Închide</string>
     <string name="action_send">Trimite</string>
     <string name="add_photos">Adaugă fotografii</string>
+    <string name="ticket_message">Mesaj</string>
 </resources>

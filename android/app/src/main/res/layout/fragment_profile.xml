@@ -14,8 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/spacing_normal"
-        android:paddingRight="@dimen/spacing_normal"
         tools:context=".profile.ProfileFragment">
 
         <android.support.design.widget.TextInputLayout
@@ -105,7 +103,7 @@
                 android:id="@+id/address_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPostalAddress" />
+                android:inputType="textPostalAddress|textCapWords" />
 
         </android.support.design.widget.TextInputLayout>
 

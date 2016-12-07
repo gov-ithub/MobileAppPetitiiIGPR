@@ -19,7 +19,7 @@ import java.lang.annotation.RetentionPolicy;
 
 import ro.politiaromana.petitie.mobile.android.about.AboutActivity;
 import ro.politiaromana.petitie.mobile.android.databinding.ActivityMainBinding;
-import ro.politiaromana.petitie.mobile.android.petition.PetitionActivity;
+import ro.politiaromana.petitie.mobile.android.ticket.NewTicketActivity;
 import ro.politiaromana.petitie.mobile.android.profile.ProfileActivity;
 import ro.politiaromana.petitie.mobile.android.utils.ActivityUtils;
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         ActivityUtils.setupSimpleToolbar(this, binding.toolbar);
         setupDrawer();
 
-        binding.newPetitionButton.setOnClickListener(v -> startActivity(new Intent(this, PetitionActivity.class)));
+        binding.newPetitionButton.setOnClickListener(v -> startActivity(new Intent(this, NewTicketActivity.class)));
     }
 
     private void setupDrawer() {

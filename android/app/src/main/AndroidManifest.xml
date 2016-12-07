@@ -21,8 +21,9 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -45,12 +46,12 @@
             android:name=".LegislationActivity"
             android:label="@string/drawer_item_legislation" />
         <activity
-            android:name=".petition.PetitionActivity"
+            android:name=".ticket.NewTicketActivity"
             android:label="@string/action_new_petition" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDVvsAJ_Qvvd1hKVT-ZyVm0zS_guUwxxiA" />
+            android:value="@string/google_api_key" />
 
     </application>
 

@@ -1,4 +1,4 @@
-package ro.politiaromana.petitie.mobile.android.petition;
+package ro.politiaromana.petitie.mobile.android.ticket;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,9 +15,8 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.ArrayList;
 
-import io.realm.RealmConfiguration;
 import ro.politiaromana.petitie.mobile.android.R;
-import ro.politiaromana.petitie.mobile.android.databinding.ActivityPetitionBinding;
+import ro.politiaromana.petitie.mobile.android.databinding.ActivityNewTicketBinding;
 import ro.politiaromana.petitie.mobile.android.domain.GetProfileFromStorage;
 import ro.politiaromana.petitie.mobile.android.domain.SaveProfileToStorage;
 import ro.politiaromana.petitie.mobile.android.model.Profile;
@@ -26,17 +25,12 @@ import ro.politiaromana.petitie.mobile.android.model.Ticket;
 import ro.politiaromana.petitie.mobile.android.profile.ProfileContract;
 import ro.politiaromana.petitie.mobile.android.profile.ProfileFragment;
 import ro.politiaromana.petitie.mobile.android.profile.ProfilePresenter;
-import ro.politiaromana.petitie.mobile.android.ticket.TicketDetailsContract;
-import ro.politiaromana.petitie.mobile.android.ticket.TicketDetailsPresenter;
-import ro.politiaromana.petitie.mobile.android.ticket.TicketFragment;
 import ro.politiaromana.petitie.mobile.android.utils.ActivityUtils;
 
 
-public class PetitionActivity extends AppCompatActivity implements PetitionContract.View {
+public class NewTicketActivity extends AppCompatActivity {
 
-//    private Realm tempRealm;
-
-    private ActivityPetitionBinding binding;
+    private ActivityNewTicketBinding binding;
     private ProfileContract.Presenter profilePresenter;
     private TicketDetailsContract.Presenter ticketDetailsPresenter;
 
@@ -45,10 +39,8 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_petition);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_new_ticket);
         ActivityUtils.setupSimpleToolbar(this, binding.toolbar);
-
-//        tempRealm = Realm.getInstance(configureInMemoryRealm());
 
         String[] steps = getResources().getStringArray(R.array.petition_steps);
         binding.stepIndicator.setStepNames(steps);
@@ -58,7 +50,7 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_petition_menu, menu);
+        getMenuInflater().inflate(R.menu.activity_new_ticket_menu, menu);
         return true;
     }
 
@@ -99,7 +91,6 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
         }
     }
 
-    @Override
     public boolean goBackOneStep() {
         FragmentManager childFm = getSupportFragmentManager();
         if (childFm.getBackStackEntryCount() > 0) {
@@ -109,12 +100,6 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
             return true;
         }
         return false;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        tempRealm.close();
     }
 
     private void initiatePetitionFlow() {
@@ -139,15 +124,14 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
 
     private void nextPetitionFragment() {
         ticketDetailsPresenter = new TicketDetailsPresenter();
-        ticketDetailsPresenter.setOnSendCallback(ticket -> {
-            new GetProfileFromStorage().call()
-                    .subscribe(profile -> showEmailClient(profile, ticket));
-        });
+        ticketDetailsPresenter.setOnSendCallback(ticket ->
+                new GetProfileFromStorage().call()
+                        .subscribe(profile -> showEmailClient(profile, ticket)));
 
-        TicketFragment ticketFragment = new TicketFragment();
-        ticketFragment.setPresenter(ticketDetailsPresenter);
+        TicketDetailsFragment ticketDetailsFragment = new TicketDetailsFragment();
+        ticketDetailsFragment.setPresenter(ticketDetailsPresenter);
         getTransactionWithAnimations()
-                .replace(R.id.petition_steps_container, ticketFragment, TicketFragment.class.getSimpleName())
+                .replace(R.id.petition_steps_container, ticketDetailsFragment, TicketDetailsFragment.class.getSimpleName())
                 .addToBackStack("petitions")
                 .commit();
         binding.stepIndicator.nextStep();
@@ -158,14 +142,6 @@ public class PetitionActivity extends AppCompatActivity implements PetitionContr
         return getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(R.anim.in_right, R.anim.out_left, R.anim.in_left, R.anim.out_right);
-    }
-
-    private static RealmConfiguration configureInMemoryRealm() {
-        return new RealmConfiguration.Builder()
-                .name("temp.realm")
-                .deleteRealmIfMigrationNeeded()
-                .inMemory()
-                .build();
     }
 
     public void showEmailClient(Profile profile, Ticket ticket) {

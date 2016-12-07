@@ -1,4 +1,4 @@
-package ro.politiaromana.petitie.mobile.android.views;
+package ro.politiaromana.petitie.mobile.android.widget;
 
 import android.animation.LayoutTransition;
 import android.annotation.TargetApi;

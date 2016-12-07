@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".petition.PetitionActivity">
+        tools:context=".ticket.NewTicketActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -28,9 +28,13 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical"
+            android:paddingBottom="@dimen/spacing_normal"
+            android:paddingLeft="@dimen/padding_normal"
+            android:paddingRight="@dimen/padding_normal"
+            android:paddingTop="@dimen/spacing_normal"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <ro.politiaromana.petitie.mobile.android.views.StepIndicator
+            <ro.politiaromana.petitie.mobile.android.widget.StepIndicator
                 android:id="@+id/step_indicator"
                 android:layout_width="192dp"
                 android:layout_height="wrap_content" />
@@ -38,8 +42,7 @@
             <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="@dimen/padding_normal"
-                android:paddingTop="@dimen/padding_normal">
+                android:layout_marginTop="@dimen/spacing_normal">
 
                 <FrameLayout
                     android:id="@+id/petition_steps_container"
