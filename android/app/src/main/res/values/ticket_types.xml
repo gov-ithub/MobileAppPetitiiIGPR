@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!--This is the most depressing string-array I have ever written-->
     <string-array name="ticket_type_array">
         <item>Furt</item>
         <item>Crimă</item>
         <item>Violență domestică</item>
     </string-array>
+
 </resources>

@@ -66,10 +66,10 @@
     <string name="add_photos">Add photos</string>
     <string name="send_ticket">Send ticket</string>
     <string name="ticket_address">Ticket Address (optional)</string>
-    <string name="description">Description</string>
+    <string name="ticket_message">Message</string>
 
-    <string name="error_description_required">Description is required</string>
-    <string name="chooser_title">Send mail using...</string>
+    <string name="error_message_required">Message is required</string>
+    <string name="chooser_title">Send mail using…</string>
     <string name="error_google_play_services">Can\'t find Google Play Services</string>
     <string name="error_place_not_found">Can\'t find this place</string>
     <!--endregion-->

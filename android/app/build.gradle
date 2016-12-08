@@ -19,13 +19,12 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        multiDexEnabled true
         applicationId "ro.politiaromana.petitie.mobile.android"
         minSdkVersion 16
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 3
-        versionName "0.3"
-//        multiDexEnabled true
+        versionCode 6
+        versionName "0.6"
+        multiDexEnabled true
         vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -81,6 +80,8 @@ dependencies {
     compile "com.android.support:preference-v14:$rootProject.supportLibrary"
     compile "com.android.support:design:$rootProject.ext.supportLibrary"
     compile "com.google.firebase:firebase-core:$rootProject.ext.play"
+    compile "com.google.firebase:firebase-crash:$rootProject.ext.play"
+    compile "com.google.android.gms:play-services-places:$rootProject.ext.play"
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
     compile "com.squareup.retrofit2:converter-jackson:$rootProject.ext.retrofit"
     compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.ext.retrofit"
@@ -97,7 +98,6 @@ dependencies {
     compile "com.googlecode.libphonenumber:libphonenumber:$rootProject.ext.libPhoneNumber"
     compile "com.mikepenz:google-material-typeface:$rootProject.ext.materialTypefaces"
     compile "com.github.bumptech.glide:glide:$rootProject.ext.glide"
-    compile "com.google.android.gms:play-services-places:$rootProject.playServicesVersion"
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

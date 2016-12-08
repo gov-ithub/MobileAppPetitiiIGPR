@@ -33,21 +33,19 @@ import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 import static com.mikepenz.iconics.Iconics.TAG;
 
-public class TicketFragment extends Fragment implements TicketDetailsContract.View {
+public class TicketDetailsFragment extends Fragment implements TicketDetailsContract.View {
 
     private static final int REQUEST_IMAGE_CAPTURE_1 = 1;
     private static final int REQUEST_IMAGE_CAPTURE_2 = 2;
     private static final int REQUEST_IMAGE_CAPTURE_3 = 3;
     private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 4;
 
-    private static final String KEY_PROFILE = "key_profile";
-
     private FragmentTicketBinding binding;
     private TicketDetailsContract.Presenter presenter;
     private CharSequence[] ticketTypeArray;
     private List<String> attachmentPathList = new ArrayList<>(4);
 
-    private File mCurrentPhotoFile;
+    private File currentPhotoFile;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,15 +70,15 @@ public class TicketFragment extends Fragment implements TicketDetailsContract.Vi
         binding.ticketTypeSpinner.setAdapter(ticketTypeAdapter);
 
         binding.image1.setOnClickListener(v ->
-                mCurrentPhotoFile = CameraUtil.dispatchTakePictureIntent(TicketFragment.this,
+                currentPhotoFile = CameraUtil.dispatchTakePictureIntent(TicketDetailsFragment.this,
                         REQUEST_IMAGE_CAPTURE_1)
         );
         binding.image2.setOnClickListener(v ->
-                mCurrentPhotoFile = CameraUtil.dispatchTakePictureIntent(TicketFragment.this,
+                currentPhotoFile = CameraUtil.dispatchTakePictureIntent(TicketDetailsFragment.this,
                         REQUEST_IMAGE_CAPTURE_2)
         );
         binding.image3.setOnClickListener(v ->
-                mCurrentPhotoFile = CameraUtil.dispatchTakePictureIntent(TicketFragment.this,
+                currentPhotoFile = CameraUtil.dispatchTakePictureIntent(TicketDetailsFragment.this,
                         REQUEST_IMAGE_CAPTURE_3)
         );
 
@@ -127,30 +125,28 @@ public class TicketFragment extends Fragment implements TicketDetailsContract.Vi
 
     private void onImageSuccess(ImageView imageView) {
         Glide.with(this)
-                .load(mCurrentPhotoFile)
+                .load(currentPhotoFile)
                 .centerCrop()
                 .into(imageView);
-        attachmentPathList.add(mCurrentPhotoFile.getAbsolutePath());
-        mCurrentPhotoFile = null;
+        attachmentPathList.add(currentPhotoFile.getAbsolutePath());
+        currentPhotoFile = null;
     }
 
     private void onImageFailure() {
-        if (mCurrentPhotoFile != null) {
-            mCurrentPhotoFile.delete();
-            mCurrentPhotoFile = null;
+        if (currentPhotoFile != null) {
+            currentPhotoFile.delete();
+            currentPhotoFile = null;
         }
     }
 
     @Override
     public void showChoosePlaceScreen() {
         try {
-            Intent intent =
-                    new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
-                            .build(getActivity());
+            Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                    .build(getActivity());
             startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
         } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
-            Toast.makeText(getActivity(), getString(R.string.error_google_play_services),
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.error_google_play_services), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -160,11 +156,13 @@ public class TicketFragment extends Fragment implements TicketDetailsContract.Vi
         presenter.dropView();
     }
 
+    @NonNull
     @Override
     public String getTicketType() {
         return ((String) binding.ticketTypeSpinner.getSelectedItem());
     }
 
+    @NonNull
     @Override
     public List<String> getAttachmentList() {
         return attachmentPathList;
@@ -175,6 +173,7 @@ public class TicketFragment extends Fragment implements TicketDetailsContract.Vi
         return binding.addressInput.getText().toString();
     }
 
+    @NonNull
     @Override
     public String getDescription() {
         return binding.descriptionInput.getText().toString();
@@ -182,7 +181,7 @@ public class TicketFragment extends Fragment implements TicketDetailsContract.Vi
 
     @Override
     public void showDescriptionRequiredError() {
-        binding.descriptionInputLayout.setError(getString(R.string.error_description_required));
+        binding.descriptionInputLayout.setError(getString(R.string.error_message_required));
     }
 
     @Override
@@ -192,7 +191,9 @@ public class TicketFragment extends Fragment implements TicketDetailsContract.Vi
 
     @Override
     public void onEmailSent() {
-        binding.sendTicket.setText(R.string.action_done);
-        binding.sendTicket.setOnClickListener(v -> getActivity().finish());
+        binding.sendTicket.postDelayed(() -> {
+            binding.sendTicket.setText(R.string.action_done);
+            binding.sendTicket.setOnClickListener(v -> getActivity().finish());
+        }, 1000);
     }
 }
