@@ -1,18 +1,21 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
         classpath "io.realm:realm-gradle-plugin:$rootProject.ext.realm"
         classpath "me.tatarka:gradle-retrolambda:$rootProject.ext.retrolambdaPlugin"
         classpath "com.google.gms:google-services:$rootProject.ext.googleServicesPlugin"
+        classpath "com.github.andreiverdes:license-gradle-plugin:master-SNAPSHOT"
     }
 }
 
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'realm-android'
+apply plugin: 'com.github.hierynomus.license'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -66,6 +69,36 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
+}
+
+task copyLicensesFile(type: Copy) {
+    description = 'Copying the licenses assets file...'
+    from 'build/reports/license'
+    include 'dependency-license.json'
+    into 'src/main/assets'
+}
+
+downloadLicenses {
+    ext.apacheTwo = license('Apache 2.0', 'http://www.apache.org/licenses/LICENSE-2.0.txt')
+    licenses = [
+            (group('com.google.firebase')) : apacheTwo,
+            (group('com.google.android.gms')) : apacheTwo,
+            (group('com.android.support')) : apacheTwo,
+            (group('io.realm')) : apacheTwo
+    ]
+    report.xml.enabled = false
+    report.html.enabled = false
+    report.json.enabled = true
+    reportByDependency = true
+    reportByLicenseType = false
+    includeProjectDependencies = true
+    dependencyConfiguration = 'compile'
+}
+
+project.afterEvaluate {
+    generateDebugResources.dependsOn tasks['copyLicensesFile']
+    generateReleaseResources.dependsOn tasks['copyLicensesFile']
+    copyLicensesFile.dependsOn tasks['downloadLicenses']
 }
 
 dependencies {
