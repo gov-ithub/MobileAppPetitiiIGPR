@@ -4,8 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,12 +21,62 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tl9-A7-eUg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="323.5"/>
+                                <color key="backgroundColor" red="0.12384637445211411" green="0.18022346496582031" blue="0.3024061918258667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGB-uv-iLR">
+                                <rect key="frame" x="0.0" y="323.5" width="375" height="20"/>
+                                <color key="backgroundColor" red="0.23054862022399902" green="0.32135838270187378" blue="0.50873345136642456" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ccE-ia-MEt"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-igpr" translatesAutoresizingMaskIntoConstraints="NO" id="9Wp-MA-cZL">
+                                <rect key="frame" x="129.5" y="262.5" width="116" height="156"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pre-rendered" translatesAutoresizingMaskIntoConstraints="NO" id="ECY-KS-437">
+                                <rect key="frame" x="52" y="89" width="270" height="66"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="govithub-logo" translatesAutoresizingMaskIntoConstraints="NO" id="PfI-5A-Yh3">
+                                <rect key="frame" x="133.5" y="616" width="108" height="31"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="susținut de:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILW-qp-wWH">
+                                <rect key="frame" x="156" y="601" width="63" height="14"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="12"/>
+                                <color key="textColor" red="0.019607843137254902" green="0.25098039215686274" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PfI-5A-Yh3" firstAttribute="top" secondItem="ILW-qp-wWH" secondAttribute="bottom" constant="1" id="0P9-kh-OAy"/>
+                            <constraint firstItem="tl9-A7-eUg" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="3sg-jG-0A6"/>
+                            <constraint firstItem="9Wp-MA-cZL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ATT-Jj-MZ2"/>
+                            <constraint firstItem="PfI-5A-Yh3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Iew-ww-To8"/>
+                            <constraint firstAttribute="trailing" secondItem="gGB-uv-iLR" secondAttribute="trailing" id="NXr-eP-zYR"/>
+                            <constraint firstItem="ECY-KS-437" firstAttribute="centerY" secondItem="tl9-A7-eUg" secondAttribute="centerY" multiplier="0.75" id="VAf-hA-JPu"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="PfI-5A-Yh3" secondAttribute="bottom" constant="20" id="XOo-d8-8hF"/>
+                            <constraint firstItem="gGB-uv-iLR" firstAttribute="top" secondItem="tl9-A7-eUg" secondAttribute="bottom" id="Y2p-CI-A5k"/>
+                            <constraint firstItem="9Wp-MA-cZL" firstAttribute="centerY" secondItem="gGB-uv-iLR" secondAttribute="centerY" constant="7" id="ZO5-LS-oDc"/>
+                            <constraint firstItem="gGB-uv-iLR" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ZZQ-DR-LNm"/>
+                            <constraint firstItem="gGB-uv-iLR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="g2n-Cy-aU8"/>
+                            <constraint firstItem="tl9-A7-eUg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="k0f-Mo-zpP"/>
+                            <constraint firstItem="ILW-qp-wWH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ky0-fA-Kr2"/>
+                            <constraint firstAttribute="trailing" secondItem="tl9-A7-eUg" secondAttribute="trailing" id="l0s-zp-9wE"/>
+                            <constraint firstItem="ECY-KS-437" firstAttribute="centerX" secondItem="tl9-A7-eUg" secondAttribute="centerX" id="oBq-bf-h6M"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="govithub-logo" width="108" height="31"/>
+        <image name="logo-igpr" width="116" height="156"/>
+        <image name="pre-rendered" width="270" height="66"/>
+    </resources>
 </document>
