@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C000CF601E0701E700EF75F9 /* PoliceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000CF5F1E0701E700EF75F9 /* PoliceButton.swift */; };
 		C0D7A59A1DFC94BA009CA367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7A5991DFC94BA009CA367 /* AppDelegate.swift */; };
 		C0D7A59C1DFC94BA009CA367 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7A59B1DFC94BA009CA367 /* ViewController.swift */; };
 		C0D7A59F1DFC94BA009CA367 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0D7A59D1DFC94BA009CA367 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C000CF5F1E0701E700EF75F9 /* PoliceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoliceButton.swift; sourceTree = "<group>"; };
 		C099D3671E06F58500E62F44 /* DINPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Bold.ttf"; sourceTree = "<group>"; };
 		C0D7A5961DFC94BA009CA367 /* PolitiaRomanaPetitii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolitiaRomanaPetitii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D7A5991DFC94BA009CA367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				C0D7A5991DFC94BA009CA367 /* AppDelegate.swift */,
 				C0D7A59B1DFC94BA009CA367 /* ViewController.swift */,
+				C000CF5F1E0701E700EF75F9 /* PoliceButton.swift */,
 				C0D7A59D1DFC94BA009CA367 /* Main.storyboard */,
 				C0D7A5A01DFC94BA009CA367 /* Assets.xcassets */,
 				C0D7A5A21DFC94BA009CA367 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C000CF601E0701E700EF75F9 /* PoliceButton.swift in Sources */,
 				C0D7A59C1DFC94BA009CA367 /* ViewController.swift in Sources */,
 				C0D7A59A1DFC94BA009CA367 /* AppDelegate.swift in Sources */,
 			);
