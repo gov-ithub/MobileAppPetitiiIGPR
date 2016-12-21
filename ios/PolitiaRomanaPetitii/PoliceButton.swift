@@ -8,10 +8,10 @@
 
 import UIKit
 
-@IBDesignable
+// @IBDesignable /* xcode is still shit and can't render basic stuff */
 class PoliceButton: UIButton {
     
-    @IBInspectable var backgroundImage:UIImage = UIImage(named:"bg-pattern")! {
+    var backgroundImage:UIImage = UIImage(named:"bg-pattern")! {
         didSet {
             self.setNeedsDisplay()
         }
@@ -24,8 +24,11 @@ class PoliceButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
+
     override func draw(_ rect: CGRect) {
+        self.setTitleColor(UIColor.white, for: .normal)
+        self.titleLabel?.font = UIFont(name: "DINPro-Regular", size: 16)
+
         // fill vertically
         var j:CGFloat = 0.0
         while (j * backgroundImage.size.height) < self.bounds.size.height {

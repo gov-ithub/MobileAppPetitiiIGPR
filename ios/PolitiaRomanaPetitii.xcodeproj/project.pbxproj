@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3984C8D41E09873400ECF250 /* DINPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C099D3671E06F58500E62F44 /* DINPro-Bold.ttf */; };
+		3984C8D71E09879200ECF250 /* DINPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3984C8D61E09879200ECF250 /* DINPro-Regular.ttf */; };
+		3984C8D91E09948000ECF250 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3984C8D81E09948000ECF250 /* Assets.xcassets */; };
 		C000CF601E0701E700EF75F9 /* PoliceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000CF5F1E0701E700EF75F9 /* PoliceButton.swift */; };
 		C0D7A59A1DFC94BA009CA367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7A5991DFC94BA009CA367 /* AppDelegate.swift */; };
 		C0D7A59C1DFC94BA009CA367 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7A59B1DFC94BA009CA367 /* ViewController.swift */; };
 		C0D7A59F1DFC94BA009CA367 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0D7A59D1DFC94BA009CA367 /* Main.storyboard */; };
-		C0D7A5A11DFC94BA009CA367 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0D7A5A01DFC94BA009CA367 /* Assets.xcassets */; };
 		C0D7A5A41DFC94BA009CA367 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0D7A5A21DFC94BA009CA367 /* LaunchScreen.storyboard */; };
 		C0D7A5AF1DFC94BA009CA367 /* PolitiaRomanaPetitiiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7A5AE1DFC94BA009CA367 /* PolitiaRomanaPetitiiTests.swift */; };
 		C0D7A5BA1DFC94BA009CA367 /* PolitiaRomanaPetitiiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7A5B91DFC94BA009CA367 /* PolitiaRomanaPetitiiUITests.swift */; };
@@ -35,13 +37,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3984C8D61E09879200ECF250 /* DINPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Regular.ttf"; sourceTree = "<group>"; };
+		3984C8D81E09948000ECF250 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C000CF5F1E0701E700EF75F9 /* PoliceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoliceButton.swift; sourceTree = "<group>"; };
 		C099D3671E06F58500E62F44 /* DINPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Bold.ttf"; sourceTree = "<group>"; };
 		C0D7A5961DFC94BA009CA367 /* PolitiaRomanaPetitii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolitiaRomanaPetitii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D7A5991DFC94BA009CA367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0D7A59B1DFC94BA009CA367 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C0D7A59E1DFC94BA009CA367 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C0D7A5A01DFC94BA009CA367 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0D7A5A31DFC94BA009CA367 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0D7A5A51DFC94BA009CA367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0D7A5AA1DFC94BA009CA367 /* PolitiaRomanaPetitiiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PolitiaRomanaPetitiiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,9 +107,10 @@
 				C0D7A59B1DFC94BA009CA367 /* ViewController.swift */,
 				C000CF5F1E0701E700EF75F9 /* PoliceButton.swift */,
 				C0D7A59D1DFC94BA009CA367 /* Main.storyboard */,
-				C0D7A5A01DFC94BA009CA367 /* Assets.xcassets */,
 				C0D7A5A21DFC94BA009CA367 /* LaunchScreen.storyboard */,
+				3984C8D81E09948000ECF250 /* Assets.xcassets */,
 				C099D3671E06F58500E62F44 /* DINPro-Bold.ttf */,
+				3984C8D61E09879200ECF250 /* DINPro-Regular.ttf */,
 				C0D7A5A51DFC94BA009CA367 /* Info.plist */,
 			);
 			path = PolitiaRomanaPetitii;
@@ -237,9 +241,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3984C8D71E09879200ECF250 /* DINPro-Regular.ttf in Resources */,
 				C0D7A5A41DFC94BA009CA367 /* LaunchScreen.storyboard in Resources */,
-				C0D7A5A11DFC94BA009CA367 /* Assets.xcassets in Resources */,
+				3984C8D41E09873400ECF250 /* DINPro-Bold.ttf in Resources */,
 				C0D7A59F1DFC94BA009CA367 /* Main.storyboard in Resources */,
+				3984C8D91E09948000ECF250 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
