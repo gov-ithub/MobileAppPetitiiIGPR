@@ -94,6 +94,12 @@
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="ViewModels\SignInPageViewModel.cs" />
+    <Compile Include="ViewModels\SignUpPageViewModel.cs" />
+    <Compile Include="ViewModels\TicketsWithoutAccountPageViewModel.cs" />
+    <Compile Include="Views\SignInPage.xaml.cs">
+      <DependentUpon>SignInPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -104,13 +110,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\SignUpPage.xaml.cs">
+      <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TicketsWithoutAccountPage.xaml.cs">
+      <DependentUpon>TicketsWithoutAccountPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Views\SignInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SignUpPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TicketsWithoutAccountPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
