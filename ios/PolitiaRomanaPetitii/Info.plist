@@ -47,5 +47,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Folosim localizarea ta pentru a o inlcude la sesizări.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Fotografiaza parcarile ilegale.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Fotografiaza parcarile ilegale.</string>
 </dict>
 </plist>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VCu-Mj-8I5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VCu-Mj-8I5">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,6 +14,24 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Report View Controller-->
+        <scene sceneID="bXe-Xp-EeZ">
+            <objects>
+                <viewController id="Kff-jD-PmV" customClass="ReportViewController" customModule="PolitiaRomanaPetitii" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="riP-0t-HQZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="pyH-YB-QCV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jcb-TO-bmG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XGx-XV-IPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-575" y="1152"/>
+        </scene>
         <!--Despre-->
         <scene sceneID="Xbd-gH-QOE">
             <objects>
@@ -97,6 +118,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VL-vX-76E" customClass="PoliceButton" customModule="PolitiaRomanaPetitii" customModuleProvider="target">
+                                <rect key="frame" x="58.5" y="228.5" width="258" height="55"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="ISV-kx-G9J"/>
@@ -105,6 +127,7 @@
                                 <state key="normal" title="Creează cont nou"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZW-sL-2Kd" customClass="PoliceButton" customModule="PolitiaRomanaPetitii" customModuleProvider="target">
+                                <rect key="frame" x="58.5" y="301.5" width="258" height="55"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="AIj-tr-sJT"/>
@@ -112,10 +135,11 @@
                                 </constraints>
                                 <state key="normal" title="Intră în cont"/>
                                 <connections>
-                                    <segue destination="b9v-RY-hN9" kind="push" id="C9G-l2-Cpn"/>
+                                    <segue destination="b9v-RY-hN9" kind="show" id="C9G-l2-Cpn"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Petiții online către IGPR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbd-0k-pbl">
+                                <rect key="frame" x="37.5" y="78" width="300" height="89.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="9hp-3c-HJi"/>
                                 </constraints>
@@ -124,12 +148,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vz5-mJ-XhC" customClass="PoliceButton" customModule="PolitiaRomanaPetitii" customModuleProvider="target">
+                                <rect key="frame" x="58.5" y="374.5" width="258" height="55"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="507-Q5-PWw"/>
                                     <constraint firstAttribute="width" constant="258" id="A2a-Pb-7Zr"/>
                                 </constraints>
                                 <state key="normal" title="Trimite petiție fără creare de cont"/>
+                                <connections>
+                                    <segue destination="Kff-jD-PmV" kind="show" id="yZB-j1-ypN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,11 +191,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PpM-yF-ucZ">
-                                <frame key="frameInset" minX="168" minY="347" width="38" height="30"/>
+                                <rect key="frame" x="168" y="347" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="c51-S5-RD5" kind="push" id="wnN-cE-AW9"/>
+                                    <segue destination="c51-S5-RD5" kind="show" id="wnN-cE-AW9"/>
                                 </connections>
                             </button>
                         </subviews>
