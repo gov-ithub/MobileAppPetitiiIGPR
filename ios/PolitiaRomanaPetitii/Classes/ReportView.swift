@@ -16,6 +16,8 @@ class ReportView: UIView {
   fileprivate var scrollView: UIScrollView = {
     let scrollView = UIScrollView()
     scrollView.backgroundColor = UIColor.white
+    scrollView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 0, 0)
     return scrollView
   }()
   
@@ -27,13 +29,23 @@ class ReportView: UIView {
   
   fileprivate var scrollViewContentWidthConstraint : NSLayoutConstraint!
   
-  fileprivate var titleLabel: UILabel = {
-    let label = UILabel()
-    label.font = UIFont.fontRegularText()
-    label.text = NSLocalizedString("To send us a report, please\nsubmit below information", comment: "")
-    label.textColor = UIColor.textColorHighlighted()
-    label.textAlignment = .center
-    label.numberOfLines = 0
+  fileprivate lazy var reportTypeSelector: ReportTypeSelector = {
+    let typeSelector = ReportTypeSelector()
+    typeSelector.onSelect = {[unowned self] type in
+      self.reportType = type
+      self.reportTypeTextField.text = type.name
+      self.reportTypeTextField.resignFirstResponder()
+    }
+    return typeSelector
+  }()
+  
+  fileprivate lazy var reportTypeTextField: UITextField = {
+    let label = UITextField()
+    label.font = UIFont.fontTitleText()
+    label.textColor = UIColor.textColor()
+    label.placeholder = NSLocalizedString("Report type", comment: "")
+    label.backgroundColor = UIColor.white
+    label.inputView = self.reportTypeSelector
     return label
   }()
   
@@ -86,6 +98,7 @@ class ReportView: UIView {
     }
   }
   var comments: String? { get { return self.commentsView.text } }
+  var reportType: ReportType?
   
   var onSend: (() -> Void)?
   var onLocateMe: (() -> Void)?
@@ -122,18 +135,19 @@ class ReportView: UIView {
     }
     
     // Add photo label
-    scrollView.addSubview(titleLabel)
-    constrain(titleLabel) { view in
-      view.top == view.superview!.top + 30
+    scrollView.addSubview(reportTypeTextField)
+    constrain(reportTypeTextField) { view in
+      view.top == view.superview!.top + 10
       view.leading == view.superview!.leading + 20
       view.trailing == view.superview!.trailing - 20
+      view.height == 34
     }
     
     // Add separator
     let separator1 = LineView()
     scrollView.addSubview(separator1)
-    constrain(separator1, titleLabel) { view, topView in
-      view.top == topView.bottom + 30
+    constrain(separator1, reportTypeTextField) { view, topView in
+      view.top == topView.bottom + 10
       view.leading == view.superview!.leading
       view.trailing == view.superview!.trailing
     }
@@ -218,7 +232,8 @@ class ReportView: UIView {
   }
   
   private func updateViewContentForKeyboard(height: CGFloat, curve: NSInteger, duration: CGFloat) {
-    let insets = UIEdgeInsetsMake(0, 0, height, 0)
+    var insets = self.scrollView.contentInset
+    insets.bottom = height
     self.scrollView.contentInset = insets
     self.scrollView.scrollIndicatorInsets = insets
   }

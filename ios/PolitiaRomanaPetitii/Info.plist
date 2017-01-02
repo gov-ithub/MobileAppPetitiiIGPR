@@ -22,6 +22,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Fotografiaza parcarile ilegale.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Folosim localizarea ta pentru a o inlcude la sesizări.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Fotografiaza parcarile ilegale.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>DINPro-Bold.ttf</string>
@@ -35,6 +41,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -47,11 +57,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Folosim localizarea ta pentru a o inlcude la sesizări.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Fotografiaza parcarile ilegale.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Fotografiaza parcarile ilegale.</string>
 </dict>
 </plist>

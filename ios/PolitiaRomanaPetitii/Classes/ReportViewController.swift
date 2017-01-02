@@ -38,6 +38,7 @@ class ReportViewController: UIViewController {
     
     self.title = NSLocalizedString("New report", comment: "")
     self.navigationController?.isNavigationBarHidden = false
+    self.automaticallyAdjustsScrollViewInsets = false
     
     // Start tracker
     do {
