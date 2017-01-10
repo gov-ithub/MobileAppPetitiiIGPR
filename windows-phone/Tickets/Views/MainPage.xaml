@@ -1,0 +1,35 @@
+﻿<phone:PhoneApplicationPage x:Class="Tickets.Views.MainPage"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            mc:Ignorable="d"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            SupportedOrientations="Portrait"
+                            Orientation="Portrait"
+                            shell:SystemTray.IsVisible="True">
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
+                   Style="{StaticResource PhoneTextTitle2Style}" />
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <Button x:Name="SignUp"  Content="Crează cont nou" />
+            <Button x:Name="SignIn" Content="Intră în cont" />
+            <Button x:Name="TicketWithoutAccount" Content="Petiții fără cont" />
+        </StackPanel>
+
+        <HyperlinkButton Grid.Row="2" Content="Despre aplicație" />
+    </Grid>
+
+</phone:PhoneApplicationPage>
