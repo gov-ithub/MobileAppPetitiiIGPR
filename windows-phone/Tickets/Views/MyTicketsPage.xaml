@@ -1,0 +1,95 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Tickets.Views.MyTicketsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cal="http://www.caliburnproject.org"
+    xmlns:views="clr-namespace:Tickets.Views"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="PendingTicketDataTemplate">
+            <StackPanel>
+                <Grid Background="Orange" Width="200" Margin="3">
+                    <TextBlock Margin="2">în curs de rezolvare</TextBlock>
+                </Grid>
+                <TextBlock Foreground="Orange">
+                    <Run Text="Răspuns de primit prin" />
+                    <Run Text="{Binding AnswerType}" />
+                </TextBlock>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="AnsweredTicketDataTemplate">
+            <StackPanel>
+                <Grid Background="Green" Width="200" Margin="3">
+                    <TextBlock Margin="2">rezolvată</TextBlock>
+                </Grid>
+                <TextBlock Foreground="Green">
+                    <Run Text="Răspuns prin" />
+                    <Run Text="{Binding AnswerType}" />
+                    <Run Text="pe" />
+                    <Run Text="{Binding AnswerDate}" />
+                </TextBlock>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="UnansweredTicketDataTemplate">
+            <StackPanel>
+                <Grid Background="Red" Width="200" Margin="3">
+                    <TextBlock Margin="2">nerezolvată</TextBlock>
+                </Grid>
+                <TextBlock Foreground="Red" Text="răspuns neprimit" />
+            </StackPanel>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Istoricul petițiilor mele" Style="{StaticResource PhoneTextTitle2Style}" />
+
+        <ListBox x:Name="Tickets" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="/Assets/ApplicationIcon.png" />
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock>
+                                <Run Text="ID" />
+                                <Run Text="{Binding Id}" />
+                            </TextBlock>
+                            <TextBlock>
+                                <Run Text="Tip: " />
+                                <Run Text="{Binding Type}"></Run>
+                            </TextBlock>
+
+                            <views:TicketStatusTemplateSelectorControl Background="Blue"
+                                Content="{Binding}"
+                                PendingTemplate="{StaticResource PendingTicketDataTemplate}"
+                                AnsweredTemplate="{StaticResource AnsweredTicketDataTemplate}"
+                                UnansweredTemplate="{StaticResource UnansweredTicketDataTemplate}" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+
+</phone:PhoneApplicationPage>

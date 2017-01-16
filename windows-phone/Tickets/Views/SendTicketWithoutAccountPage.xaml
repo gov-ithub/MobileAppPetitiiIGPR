@@ -49,7 +49,6 @@
         </StackPanel>
 
         <Button x:Name="SendTicket" Grid.Row="2" Content="Trimite petiție" />
-
     </Grid>
 
 </phone:PhoneApplicationPage>
