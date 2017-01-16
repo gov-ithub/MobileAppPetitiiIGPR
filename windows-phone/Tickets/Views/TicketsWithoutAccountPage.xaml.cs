@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
+﻿using Microsoft.Phone.Controls;
 
 namespace Tickets.Views
 {
-    public partial class TicketsWithoutAccountPage : PhoneApplicationPage
+    public partial class TicketsWithoutAccountPage
     {
         public TicketsWithoutAccountPage()
         {

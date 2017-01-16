@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="Tickets.Views.SignInPage"
+    x:Class="Tickets.Views.DashboardPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -19,30 +19,11 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Intră în cont" Style="{StaticResource PhoneTextTitle2Style}" />
+        <TextBlock Text="Poliția Română - Petiții" Style="{StaticResource PhoneTextTitle2Style}" />
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-            <Grid Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Text="Email" VerticalAlignment="Center" />
-                <TextBox Grid.Row="0" Grid.Column="1" />
-
-                <TextBlock Grid.Row="1" Text="Parola" VerticalAlignment="Center" />
-                <TextBox Grid.Row="1" Grid.Column="1" />
-            </Grid>
-
-            <CheckBox>Păstrează-mă logat</CheckBox>
-            <HyperlinkButton HorizontalAlignment="Left">Am uitat parola/email-ul</HyperlinkButton>
-
-            <Button x:Name="SignIn" Margin="50,100">Intră în cont</Button>
+            <Button x:Name="SendPetition">Trimite petiție</Button>
+            <Button x:Name="ShowMyTickets">Istoricul petițiilor mele</Button>
         </StackPanel>
     </Grid>
 

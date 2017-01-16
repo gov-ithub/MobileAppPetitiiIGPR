@@ -2,7 +2,7 @@
 
 namespace Tickets.ViewModels
 {
-    public class SignUpPageViewModel : PropertyChangedBase
+    public class DashboardPageViewModel : PropertyChangedBase
     {
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Tickets.ViewModels
 {
-    internal class TicketsWithoutAccountPageViewModel : PropertyChangedBase
+    public class TicketsWithoutAccountPageViewModel : PropertyChangedBase
     {
     }
 }
