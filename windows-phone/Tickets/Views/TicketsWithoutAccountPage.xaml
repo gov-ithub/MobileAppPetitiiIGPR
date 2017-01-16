@@ -13,22 +13,18 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0">
-            <TextBlock Text="Petiții fără cont" Style="{StaticResource PhoneTextTitle2Style}"/>
+        <TextBlock Text="Petiții fără cont" Style="{StaticResource PhoneTextTitle2Style}" />
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <Button x:Name="SendTicket" Content="Trimite petiție fără cont" />
+            <Button x:Name="ShowMyTickets" Content="Istoricul petițiilor mele" />
         </StackPanel>
-
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
-        </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>

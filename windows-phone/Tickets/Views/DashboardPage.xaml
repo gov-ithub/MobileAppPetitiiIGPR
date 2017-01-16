@@ -22,7 +22,7 @@
         <TextBlock Text="Poliția Română - Petiții" Style="{StaticResource PhoneTextTitle2Style}" />
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-            <Button x:Name="SendPetition">Trimite petiție</Button>
+            <Button x:Name="SendTicket">Trimite petiție</Button>
             <Button x:Name="ShowMyTickets">Istoricul petițiilor mele</Button>
         </StackPanel>
     </Grid>
