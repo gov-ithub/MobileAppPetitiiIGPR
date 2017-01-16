@@ -95,6 +95,7 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="ViewModels\DashboardPageViewModel.cs" />
+    <Compile Include="ViewModels\SendTicketWithoutAccountPageViewModel.cs" />
     <Compile Include="ViewModels\SetupTicketWithoutAccountPageViewModel.cs" />
     <Compile Include="ViewModels\SignInPageViewModel.cs" />
     <Compile Include="ViewModels\SignUpPageViewModel.cs" />

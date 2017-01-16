@@ -13,17 +13,43 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
-    <Grid  Background="Transparent">
+    <Grid  Background="Transparent" Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Trimite petiție fără cont" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle2Style}" />
+        <TextBlock Text="Trimite petiție fără cont" Style="{StaticResource PhoneTextTitle2Style}" />
 
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <StackPanel Grid.Row="1" Margin="10,20,10,20">
+            <TextBlock Text="Tip petiție" />
+            <ComboBox x:Name="TicketType" Margin="10">
+                <ComboBoxItem Content="tip1" />
+                <ComboBoxItem Content="tip2" />
+            </ComboBox>
 
-        </Grid>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Adaugă fotografie" VerticalAlignment="Center" />
+                <Button x:Name="AddPicture" Content="+" />
+            </StackPanel>
+            <ListBox />
+
+            <TextBlock Text="Adresa pentru care se face petiția" />
+            <TextBox Text="&lt;Locatie&gt;" />
+
+            <TextBlock Text="Descriere" />
+            <TextBox TextWrapping="Wrap" AcceptsReturn="True" Height="150" />
+
+            <TextBlock Text="Răspunsul Poliției va fi trimis prin:" />
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="email" />
+                <RadioButton Content="poștă" />
+            </StackPanel>
+        </StackPanel>
+
+        <Button x:Name="SendTicket" Grid.Row="2" Content="Trimite petiție" />
+
     </Grid>
 
 </phone:PhoneApplicationPage>
