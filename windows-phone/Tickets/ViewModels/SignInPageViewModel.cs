@@ -6,11 +6,6 @@ namespace Tickets.ViewModels
     {
         private readonly INavigationService _navigationService;
 
-        public SignInPageViewModel()
-        {
-
-        }
-
         public SignInPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
