@@ -1,0 +1,86 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Tickets.Views.SetupTicketWithoutAccountPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid Background="Transparent" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Trimite petiție fără cont" Style="{StaticResource PhoneTextTitle2Style}" />
+
+        <ScrollViewer Grid.Row="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Margin="15" TextWrapping="Wrap">
+            (informațiile personale introduse nu vor fi salvate pentru petiții ulterioare)
+                </TextBlock>
+
+                <TextBlock Grid.Row="2" Text="Nume" VerticalAlignment="Center" />
+                <TextBox x:Name="FirstName" Grid.Row="2" Grid.Column="1" />
+
+                <TextBlock Grid.Row="3" Text="Prenume" VerticalAlignment="Center" />
+                <TextBox x:Name="LastName" Grid.Row="3" Grid.Column="1" />
+
+                <TextBlock Grid.Row="4" Text="Email" VerticalAlignment="Center" />
+                <TextBox x:Name="Email" Grid.Row="4" Grid.Column="1" />
+
+                <TextBlock Grid.Row="5" Text="CNP" VerticalAlignment="Center" />
+                <TextBox x:Name="PersonalNumericalCode" Grid.Row="5" Grid.Column="1" />
+
+                <TextBlock Grid.Row="6" Text="Domiciliu" VerticalAlignment="Center" />
+                <TextBox x:Name="Address" Grid.Row="6" Grid.Column="1" />
+
+                <TextBlock Grid.Row="7" Text="Judet" VerticalAlignment="Center" />
+                <TextBox x:Name="County" Grid.Row="7" Grid.Column="1" />
+
+                <TextBlock Grid.Row="8" Text="Telefon" VerticalAlignment="Center" />
+                <TextBox x:Name="Telephone" Grid.Row="8" Grid.Column="1" />
+            </Grid>
+        </ScrollViewer>
+
+        <CheckBox x:Name="AcceptsTermsAndConditions" Grid.Row="3">
+            <CheckBox.Content>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Sunt de acord cu" FontSize="17" />
+                    <HyperlinkButton FontSize="17">Termenii și condițiile aplicației</HyperlinkButton>
+                </StackPanel>
+            </CheckBox.Content>
+        </CheckBox>
+
+        <Button x:Name="NextStep"
+                Grid.Row="4" Content="Pasul următor" />
+    </Grid>
+
+</phone:PhoneApplicationPage>

@@ -33,6 +33,7 @@ namespace Tickets
             container.PerRequest<SignUpPageViewModel>();
             container.PerRequest<DashboardPageViewModel>();
             container.PerRequest<TicketsWithoutAccountPageViewModel>();
+            container.PerRequest<SetupTicketWithoutAccountPageViewModel>();
 
             AddCustomConventions();
         }
