@@ -17,6 +17,7 @@ namespace Tickets
         public AppBootstrapper()
         {
             Initialize();
+            LogManager.GetLog = type => new DebugLog(type);
         }
 
         protected override void Configure()
@@ -28,6 +29,13 @@ namespace Tickets
             RootFrame.Language = XmlLanguage.GetLanguage(AppResources.ResourceLanguage);
 
             container.PerRequest<MainPageViewModel>();
+            container.PerRequest<SignInPageViewModel>();
+            container.PerRequest<SignUpPageViewModel>();
+            container.PerRequest<DashboardPageViewModel>();
+            container.PerRequest<TicketsWithoutAccountPageViewModel>();
+            container.PerRequest<SetupTicketWithoutAccountPageViewModel>();
+            container.PerRequest<SendTicketWithoutAccountPageViewModel>();
+            container.PerRequest<MyTicketsPageViewModel>();
 
             AddCustomConventions();
         }

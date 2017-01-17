@@ -2,18 +2,18 @@
 
 namespace Tickets.ViewModels
 {
-    public class TicketsWithoutAccountPageViewModel : PropertyChangedBase
+    public class SendTicketWithoutAccountPageViewModel : PropertyChangedBase
     {
         private readonly INavigationService _navigationService;
 
-        public TicketsWithoutAccountPageViewModel(INavigationService navigationService)
+        public SendTicketWithoutAccountPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }
 
         public void SendTicket()
         {
-            _navigationService.For<SetupTicketWithoutAccountPageViewModel>().Navigate();
+            _navigationService.For<MyTicketsPageViewModel>().Navigate();
         }
     }
 }

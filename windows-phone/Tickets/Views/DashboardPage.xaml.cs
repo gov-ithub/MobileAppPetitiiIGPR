@@ -1,8 +1,8 @@
 ﻿namespace Tickets.Views
 {
-    public partial class SignInPage
+    public partial class DashboardPage
     {
-        public SignInPage()
+        public DashboardPage()
         {
             InitializeComponent();
         }

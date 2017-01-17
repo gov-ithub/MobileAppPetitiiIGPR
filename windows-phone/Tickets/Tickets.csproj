@@ -94,9 +94,26 @@
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Models\TicketAnswerType.cs" />
+    <Compile Include="Models\TicketType.cs" />
+    <Compile Include="ViewModels\DashboardPageViewModel.cs" />
+    <Compile Include="ViewModels\SendTicketWithoutAccountPageViewModel.cs" />
+    <Compile Include="ViewModels\SetupTicketWithoutAccountPageViewModel.cs" />
+    <Compile Include="ViewModels\MyTicketsPageViewModel.cs" />
     <Compile Include="ViewModels\SignInPageViewModel.cs" />
     <Compile Include="ViewModels\SignUpPageViewModel.cs" />
     <Compile Include="ViewModels\TicketsWithoutAccountPageViewModel.cs" />
+    <Compile Include="Views\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TemplateSelectorControl.cs" />
+    <Compile Include="Views\SendTicketWithoutAccountPage.xaml.cs">
+      <DependentUpon>SendTicketWithoutAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyTicketsPage.xaml.cs">
+      <DependentUpon>MyTicketsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
     </Compile>
@@ -110,9 +127,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\SetupTicketWithoutAccountPage.xaml.cs">
+      <DependentUpon>SetupTicketWithoutAccountPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TicketStatusTemplateSelectorControl.cs" />
     <Compile Include="Views\TicketsWithoutAccountPage.xaml.cs">
       <DependentUpon>TicketsWithoutAccountPage.xaml</DependentUpon>
     </Compile>
@@ -122,6 +143,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Views\DashboardPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SendTicketWithoutAccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MyTicketsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\SignInPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +162,10 @@
     <Page Include="Views\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SetupTicketWithoutAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SignUpPage.xaml">
       <SubType>Designer</SubType>

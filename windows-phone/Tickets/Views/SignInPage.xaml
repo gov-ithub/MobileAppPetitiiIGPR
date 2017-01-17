@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cal="http://www.caliburnproject.org"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -13,22 +14,37 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" >
-            <TextBlock Text="Intră în cont" Style="{StaticResource PhoneTextTitle2Style}"/>
+        <TextBlock Text="Intră în cont" Style="{StaticResource PhoneTextTitle2Style}" />
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Email" VerticalAlignment="Center" />
+                <TextBox Grid.Row="0" Grid.Column="1" />
+
+                <TextBlock Grid.Row="1" Text="Parola" VerticalAlignment="Center" />
+                <TextBox Grid.Row="1" Grid.Column="1" />
+            </Grid>
+
+            <CheckBox>Păstrează-mă logat</CheckBox>
+            <HyperlinkButton HorizontalAlignment="Left">Am uitat parola/email-ul</HyperlinkButton>
+
+            <Button x:Name="SignIn" Margin="50,100">Intră în cont</Button>
         </StackPanel>
-
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
-        </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>

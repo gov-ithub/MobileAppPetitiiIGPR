@@ -2,9 +2,9 @@
 
 namespace Tickets.Views
 {
-    public partial class TicketsWithoutAccountPage
+    public partial class SetupTicketWithoutAccountPage : PhoneApplicationPage
     {
-        public TicketsWithoutAccountPage()
+        public SetupTicketWithoutAccountPage()
         {
             InitializeComponent();
         }

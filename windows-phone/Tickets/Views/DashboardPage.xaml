@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="Tickets.Views.TicketsWithoutAccountPage"
+    x:Class="Tickets.Views.DashboardPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -19,11 +19,11 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Petiții fără cont" Style="{StaticResource PhoneTextTitle2Style}" />
+        <TextBlock Text="Poliția Română - Petiții" Style="{StaticResource PhoneTextTitle2Style}" />
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-            <Button x:Name="SendTicket" Content="Trimite petiție fără cont" />
-            <Button x:Name="ShowMyTickets" Content="Istoricul petițiilor mele" />
+            <Button x:Name="SendTicket">Trimite petiție</Button>
+            <Button x:Name="ShowMyTickets">Istoricul petițiilor mele</Button>
         </StackPanel>
     </Grid>
 
