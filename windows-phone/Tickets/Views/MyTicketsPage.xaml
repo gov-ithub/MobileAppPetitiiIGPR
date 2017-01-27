@@ -18,8 +18,8 @@
     <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="PendingTicketDataTemplate">
             <StackPanel>
-                <Grid Background="Orange" Width="200" Margin="3">
-                    <TextBlock Margin="2">în curs de rezolvare</TextBlock>
+                <Grid Background="Orange" Width="300" HorizontalAlignment="Left">
+                    <TextBlock FontWeight="Bold" Foreground="Black" Margin="2" HorizontalAlignment="Center">în curs de rezolvare</TextBlock>
                 </Grid>
                 <TextBlock Foreground="Orange">
                     <Run Text="Răspuns de primit prin" />
@@ -30,8 +30,8 @@
 
         <DataTemplate x:Key="AnsweredTicketDataTemplate">
             <StackPanel>
-                <Grid Background="Green" Width="200" Margin="3">
-                    <TextBlock Margin="2">rezolvată</TextBlock>
+                <Grid Background="Green" Width="300" HorizontalAlignment="Left">
+                    <TextBlock FontWeight="Bold" Margin="2" HorizontalAlignment="Center">rezolvată</TextBlock>
                 </Grid>
                 <TextBlock Foreground="Green">
                     <Run Text="Răspuns prin" />
@@ -44,8 +44,8 @@
 
         <DataTemplate x:Key="UnansweredTicketDataTemplate">
             <StackPanel>
-                <Grid Background="Red" Width="200" Margin="3">
-                    <TextBlock Margin="2">nerezolvată</TextBlock>
+                <Grid Background="Red" Width="300" HorizontalAlignment="Left">
+                    <TextBlock FontWeight="Bold" Margin="2" HorizontalAlignment="Center">nerezolvată</TextBlock>
                 </Grid>
                 <TextBlock Foreground="Red" Text="răspuns neprimit" />
             </StackPanel>
@@ -60,8 +60,8 @@
 
         <TextBlock Text="Istoricul petițiilor mele" Style="{StaticResource PhoneTextTitle2Style}" />
 
-        <ListBox x:Name="Tickets" Grid.Row="1">
-            <ListBox.ItemTemplate>
+        <ItemsControl x:Name="Tickets" Grid.Row="1">
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -70,17 +70,26 @@
                         </Grid.ColumnDefinitions>
 
                         <Image Source="/Assets/ApplicationIcon.png" />
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+
+                        <StackPanel Grid.Column="1"
+                                    VerticalAlignment="Center" HorizontalAlignment="Left">
                             <TextBlock>
                                 <Run Text="ID" />
                                 <Run Text="{Binding Id}" />
                             </TextBlock>
                             <TextBlock>
                                 <Run Text="Tip: " />
-                                <Run Text="{Binding Type}"></Run>
+                                <Run Text="{Binding Type}" />
                             </TextBlock>
 
-                            <views:TicketStatusTemplateSelectorControl Background="Blue"
+                            <TextBlock>
+                                <Run Text="Trimisă pe" />
+                                <Run Text="{Binding CreationDate}" />
+                            </TextBlock>
+
+                            <views:TicketStatusTemplateSelectorControl
+                                Margin="3"
+                                HorizontalAlignment="Left"
                                 Content="{Binding}"
                                 PendingTemplate="{StaticResource PendingTicketDataTemplate}"
                                 AnsweredTemplate="{StaticResource AnsweredTicketDataTemplate}"
@@ -88,8 +97,8 @@
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 
 </phone:PhoneApplicationPage>
