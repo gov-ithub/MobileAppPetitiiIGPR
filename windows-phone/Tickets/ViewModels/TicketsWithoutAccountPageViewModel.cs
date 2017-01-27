@@ -15,5 +15,10 @@ namespace Tickets.ViewModels
         {
             _navigationService.For<SetupTicketWithoutAccountPageViewModel>().Navigate();
         }
+
+        public void ShowMyTickets()
+        {
+            _navigationService.For<MyTicketsPageViewModel>().Navigate();
+        }
     }
 }
