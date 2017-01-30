@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -63,7 +64,10 @@
                 <TextBox x:Name="Address" Grid.Row="6" Grid.Column="1" />
 
                 <TextBlock Grid.Row="7" Text="Judet" VerticalAlignment="Center" />
-                <TextBox x:Name="County" Grid.Row="7" Grid.Column="1" />
+
+                <toolkit:ListPicker Grid.Row="7" Grid.Column="1"
+                                    ItemsSource="{Binding Counties}"
+                                    SelectedItem="{Binding County, Mode=TwoWay}" />
 
                 <TextBlock Grid.Row="8" Text="Telefon" VerticalAlignment="Center" />
                 <TextBox x:Name="Telephone" Grid.Row="8" Grid.Column="1" />
