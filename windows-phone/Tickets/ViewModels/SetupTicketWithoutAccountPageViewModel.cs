@@ -16,7 +16,21 @@ namespace Tickets.ViewModels
 
         public void NextStep()
         {
-            _navigationService.For<SendTicketWithoutAccountPageViewModel>().Navigate();
+            var user = new User
+            {
+                FirstName = FirstName,
+                LastName = LastName,
+                Email = Email,
+                PersonalNumericalCode = PersonalNumericalCode,
+                Address = Address,
+                Telephone = Telephone,
+                County = County
+            };
+
+            _navigationService
+                .For<SendTicketWithoutAccountPageViewModel>()
+                .WithParam(vm => vm.User, user)
+                .Navigate();
         }
 
         public string FirstName { get; set; }

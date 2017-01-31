@@ -97,6 +97,7 @@
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\TicketAnswerType.cs" />
     <Compile Include="Models\TicketType.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\DashboardPageViewModel.cs" />
     <Compile Include="ViewModels\SendTicketWithoutAccountPageViewModel.cs" />
     <Compile Include="ViewModels\SetupTicketWithoutAccountPageViewModel.cs" />
